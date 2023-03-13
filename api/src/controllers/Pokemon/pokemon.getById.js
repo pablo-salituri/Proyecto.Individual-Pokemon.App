@@ -30,7 +30,7 @@ const getPokemonById = async (idPokemon) => {
             return pokemon
         }
     } catch (error) {
-        return {error: 'No se encontró el pokemon solicitado'}
+        return {error: 'No se encontró el pokemon con el Id solicitado'}
     }
 }
 
