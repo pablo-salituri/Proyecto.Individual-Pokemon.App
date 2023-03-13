@@ -18,14 +18,14 @@ router.get('/pokemon', async (req, res) => {
         return res.status(503).json(respuesta)    
 })
 
-router.get('/pokemons/:idPokemon', async (req, res) => {
-        const {idPokemon} = req.params;
+/* router.get('/pokemons/:idPokemon', async (req, res) => {
+        const {idPokemon} = req.params; */
         /* if (!id)
                 return res.status(400).json({message: "El Id solicitado no existe"}); */
-        const respuesta = await getPokemonById(id);     //! ver problema await
+        //const respuesta = await getPokemonById(id);     //! ver problema await
         /* if (!respuesta.error)
         return res.status(200).json(respuesta)
         return res.status(503).json(respuesta) */
-})
+//})
 
 module.exports = router;

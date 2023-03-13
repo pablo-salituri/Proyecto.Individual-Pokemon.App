@@ -1,8 +1,8 @@
 const axios = require('axios');
 
-const { Pokemon } = require('../db');
+const  {Pokemon}  = require('../db.js')
 var URL = 'https://pokeapi.co/api/v2/pokemon/'
-const cantDePokemons = 35;
+const cantDePokemons = 15;
 const cantDeHojas = Math.ceil(cantDePokemons/20)
 let arregloURLS = [];
 var arregloBDD = [];
@@ -44,7 +44,7 @@ const getPokemons = async () => {
 const getAndSavePokemons = async () => {
     try {
         const arregloPokemons = await getPokemons();
-        //const savePokemons = await Pokemon.bulkCreate(arregloPokemons);
+        const savePokemons = await Pokemon.bulkCreate(arregloPokemons);
         return arregloPokemons
     } catch (error) {
         return {error: 'Error al completar la Base de Datos'}
