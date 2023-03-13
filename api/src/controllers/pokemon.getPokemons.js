@@ -1,15 +1,27 @@
 const axios = require('axios');
-const pokemon = require('../models/Pokemon.js');
-const URL = 'https://pokeapi.co/api/v2/pokemon/'
-const cantDePokemons = 30;
-let arregloBDD = [];
+
+const { Pokemon } = require('../db');
+var URL = 'https://pokeapi.co/api/v2/pokemon/'
+const cantDePokemons = 35;
+const cantDeHojas = Math.ceil(cantDePokemons/20)
+let arregloURLS = [];
+var arregloBDD = [];
 
 
 const getPokemons = async () => {  
     try {
-        for (let i = 1; i <= cantDePokemons; i++) {
-            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
-            const data = response.data;
+        for (let i = 1; i <= cantDeHojas; i++) {
+            let response = await axios.get(URL);
+            let data = response.data.results;
+            let nextApi = response.data.next;
+            for (const posicion of data) {
+                arregloURLS.push(posicion.url)
+            }
+            URL = nextApi;
+        }
+
+        for (const url of arregloURLS) {
+            let response = await axios.get(url);
             arregloBDD.push({
                 ID: response.data.id,
                 Nombre: response.data.name,
@@ -21,7 +33,6 @@ const getPokemons = async () => {
                 Altura: response.data.height,
                 Peso: response.data.weight
             })
-            //console.log(arregloBDD);
         }
         return arregloBDD
     } catch (error) {
@@ -30,14 +41,33 @@ const getPokemons = async () => {
 }
 
 
-
-module.exports = {
-    getPokemons
+const getAndSavePokemons = async () => {
+    try {
+        const arregloPokemons = await getPokemons();
+        //const savePokemons = await Pokemon.bulkCreate(arregloPokemons);
+        return arregloPokemons
+    } catch (error) {
+        return {error: 'Error al completar la Base de Datos'}
+    }
 }
 
 
 
-/* const getPokemons = async (req, res) => {  
+module.exports = {
+    getAndSavePokemons
+}
+
+
+
+
+
+
+
+// /****************************************************************************************
+//* Los trae mas facil y mas rapido, segun el id
+
+
+/* const getPokemons = async () => {  
     try {
         for (let i = 1; i <= cantDePokemons; i++) {
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
@@ -53,7 +83,7 @@ module.exports = {
                 Altura: response.data.height,
                 Peso: response.data.weight
             })
-            //console.log(arregloBDD);
+            console.log(arregloBDD);
         }
         return arregloBDD
     } catch (error) {
