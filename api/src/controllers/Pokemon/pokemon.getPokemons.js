@@ -1,8 +1,8 @@
 const axios = require('axios');
+const  {Pokemon}  = require('../../db.js')
 
-const  {Pokemon}  = require('../db.js')
 var URL = 'https://pokeapi.co/api/v2/pokemon/'
-const cantDePokemons = 15;
+const cantDePokemons = 40;
 const cantDeHojas = Math.ceil(cantDePokemons/20)
 let arregloURLS = [];
 var arregloBDD = [];

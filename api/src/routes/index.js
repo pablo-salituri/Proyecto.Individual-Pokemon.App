@@ -1,8 +1,8 @@
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const {getAndSavePokemons} = require('../controllers/pokemon.getPokemons.js');
-const {getPokemonById} = require('../controllers/pokemon.getById.js')
+const {getAndSavePokemons} = require('../controllers/Pokemon/pokemon.getPokemons.js');
+const {getPokemonById} = require('../controllers/Pokemon/pokemon.getById.js')
 
 const router = Router();
 
@@ -18,14 +18,14 @@ router.get('/pokemon', async (req, res) => {
         return res.status(503).json(respuesta)    
 })
 
-/* router.get('/pokemons/:idPokemon', async (req, res) => {
-        const {idPokemon} = req.params; */
-        /* if (!id)
-                return res.status(400).json({message: "El Id solicitado no existe"}); */
-        //const respuesta = await getPokemonById(id);     //! ver problema await
-        /* if (!respuesta.error)
+router.get('/pokemons/:idPokemon', async (req, res) => {
+        const {idPokemon} = req.params;
+        if (!idPokemon)
+            return res.status(400).json({message: "No se ingresó un Id válido"});
+        const respuesta = await getPokemonById(idPokemon);
+        if (!respuesta.error)
         return res.status(200).json(respuesta)
-        return res.status(503).json(respuesta) */
-//})
+        return res.status(503).json(respuesta)
+})
 
 module.exports = router;
