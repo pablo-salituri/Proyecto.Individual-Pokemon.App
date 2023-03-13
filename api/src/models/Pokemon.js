@@ -38,6 +38,9 @@ module.exports = (sequelize) => {
     Peso: {
       type: DataTypes.STRING,     // TODO: Ver que tipo de dato es
     },
+  },
+  {
+    timestamps: false
   });
 };
 
