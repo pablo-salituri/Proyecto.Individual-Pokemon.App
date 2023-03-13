@@ -23,9 +23,9 @@ const getPokemons = async (req, res) => {
             })
             //console.log(arregloBDD);
         }
-        return res.status(200).json(arregloBDD)
+        return arregloBDD
     } catch (error) {
-        return res.status(503).json({message: error.message})
+        return {error: 'No se puede acceder a la lista completa'}       // Dai Repaso II 2.00.00
     }
 }
 
