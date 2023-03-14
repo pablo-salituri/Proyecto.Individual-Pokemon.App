@@ -1,9 +1,10 @@
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const {getAndSavePokemons} = require('../controllers/Pokemon/pokemon.getPokemons.js');
-const {getPokemonById} = require('../controllers/Pokemon/pokemon.getById.js');
-const {getPokemonByName} = require('../controllers/Pokemon/pokemon.getPokemonByName.js')
+const {getAndSavePokemons} = require('../controllers/Pokemon/getPokemons.js');
+const {getPokemonById} = require('../controllers/Pokemon/getPokemonById.js');
+const {getPokemonByName} = require('../controllers/Pokemon/getPokemonByName.js');
+const {postPokemons} = require('../controllers/Pokemon/postPokemons.js')
 
 const router = Router();
 
@@ -35,6 +36,18 @@ router.get(`/pokemons`, async(req, res) => {
         if (!name)
                 return res.status(400).json({message: "No se ingresó un nombre válido"}); 
         const respuesta = await getPokemonByName(name);
+        if (!respuesta.error)
+        return res.status(200).json(respuesta)
+        return res.status(503).json(respuesta)
+})
+
+
+router.post('/pokemons', async(req, res) => {
+        const {ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso} = req.body;
+        if (!ID || !Nombre || !Imagen || !Vida || !Ataque || !Defensa)
+                return res.status(400).json({message: "Faltan ingresar datos"})
+        //else return res.status(200).json({message: "todo bien"})
+        const respuesta = await postPokemons(ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso)
         if (!respuesta.error)
         return res.status(200).json(respuesta)
         return res.status(503).json(respuesta)
