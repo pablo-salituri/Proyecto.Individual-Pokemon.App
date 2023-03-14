@@ -4,7 +4,8 @@ const { Router } = require('express');
 const {getAndSavePokemons} = require('../controllers/Pokemon/getPokemons.js');
 const {getPokemonById} = require('../controllers/Pokemon/getPokemonById.js');
 const {getPokemonByName} = require('../controllers/Pokemon/getPokemonByName.js');
-const {postPokemons} = require('../controllers/Pokemon/postPokemons.js')
+const {postPokemons} = require('../controllers/Pokemon/postPokemons.js');
+const {getTypes} = require('../controllers/Type/getTypes.js')
 
 const router = Router();
 
@@ -51,6 +52,13 @@ router.post('/pokemons', async(req, res) => {
         if (!respuesta.error)
         return res.status(200).json(respuesta)
         return res.status(503).json(respuesta)
+})
+
+router.get('/types', async(req, res) => {
+        const respuesta = await getTypes();
+        if (!respuesta.error)
+        return res.status(200).json(respuesta)
+        return res.status(404).json(respuesta)
 })
 
 module.exports = router;

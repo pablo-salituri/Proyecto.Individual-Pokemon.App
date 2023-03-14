@@ -18,7 +18,7 @@ const postPokemons = async(ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad,
 
         // * Esta es la busqueda de id en Api. Funciona bien, pero tarda muchísimo
         /* Valido si el Id existe en la Api
-        Busco el total de pokemons en le Api
+        Busco el total de pokemons en la Api
         const respuesta = await axios.get(URL);
         const totalDePokemon = respuesta.data.count
         
