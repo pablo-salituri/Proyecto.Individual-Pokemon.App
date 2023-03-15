@@ -24,7 +24,7 @@ const {getAndSaveTypes} = require('./src/controllers/Type/getTypes.js');  //Agre
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  //getAndSavePokemons();                 //ToDo: Restablecer      //Agregado por mí
+  getAndSavePokemons();                   //Agregado por mí
   getAndSaveTypes();                      // Agregado por mí
   console.log('Database Cargada');        // Agregado por mí
   server.listen(3001, () => {

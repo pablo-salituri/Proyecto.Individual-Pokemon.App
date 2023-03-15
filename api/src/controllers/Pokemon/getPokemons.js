@@ -2,7 +2,7 @@ const axios = require('axios');
 const  {Pokemon, Type}  = require('../../db.js')
 
 var URL = 'https://pokeapi.co/api/v2/pokemon/'
-const cantDePokemons = 40;
+const cantDePokemons = 20;
 const cantDeHojas = Math.ceil(cantDePokemons/20)
 
 
