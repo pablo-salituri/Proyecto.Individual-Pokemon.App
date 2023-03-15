@@ -44,11 +44,11 @@ router.get(`/pokemons`, async(req, res) => {                    // ToDo: compara
 
 
 router.post('/pokemons', async(req, res) => {
-        const {ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso} = req.body;
+        const {ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo} = req.body;          // ! tipo
         if (!ID || !Nombre || !Imagen || !Vida || !Ataque || !Defensa)
                 return res.status(400).json({message: "Faltan ingresar datos"})
         //else return res.status(200).json({message: "todo bien"})
-        const respuesta = await postPokemons(ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso)
+        const respuesta = await postPokemons(ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo)  //!tipo
         if (!respuesta.error)
         return res.status(200).json(respuesta)
         return res.status(503).json(respuesta)

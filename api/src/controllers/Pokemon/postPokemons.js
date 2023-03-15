@@ -1,10 +1,10 @@
 // const axios = require('axios');         Es de la parte comentada del código
 const URL = 'https://pokeapi.co/api/v2/pokemon/';
-const  {Pokemon}  = require('../../db.js');
+const  {Pokemon, Type}  = require('../../db.js');
 //var i = 1;    Es de la parte comentada del código
 
 
-const postPokemons = async(ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso) => {
+const postPokemons = async(ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo) => {
     try {
         //Valido si el id existe en la BDD
         if (await Pokemon.findOne({
@@ -29,6 +29,7 @@ const postPokemons = async(ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad,
         )
             return {error: 'No se pudo completar la carga porque ya existe un Pokemon con esa Imagen'}
 
+
         // * Esta es la busqueda de id en Api. Funciona bien, pero tarda muchísimo
         /* Valido si el Id existe en la Api
         Busco el total de pokemons en la Api
@@ -51,14 +52,19 @@ const postPokemons = async(ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad,
         const newPokemon = await Pokemon.create({
             ID,
             Nombre,
-            Imagen,                 //ToDo: Debe crear un pokemon en la base de datos, y este debe
-            Vida,                   //ToDo: estar relacionado con sus tipos indicados (al menos uno).
+            Imagen,                
+            Vida,                   
             Ataque,
             Defensa,
             Velocidad,
             Altura,
-            Peso
+            Peso,
         })
+
+        const tipo = await Type.findOne({where: {Nombre: Tipo}});
+
+        await newPokemon.addType(tipo)
+
         return newPokemon
     } catch (error) {
         return {error: 'No se pudo agregar el pokemon solicitado'}
