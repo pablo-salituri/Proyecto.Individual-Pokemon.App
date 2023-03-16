@@ -1,13 +1,16 @@
 const axios = require('axios');
 const URL = 'https://pokeapi.co/api/v2/pokemon/';
-const  {Pokemon}  = require('../../db.js')
+const  {Pokemon, Type}  = require('../../db.js')
 
 const getPokemonByName = async (name) => {
     //console.log(name)
     try {
         const respuestaDataBase = await Pokemon.findOne({
-            where: {
-                Nombre: name
+            where: { Nombre: name },
+            include: {
+                model: Type,
+                attributes: ['Nombre'],
+                through: {attributes:[]}
             }
         })
 
@@ -25,7 +28,8 @@ const getPokemonByName = async (name) => {
                 Defensa: data.stats[2].base_stat,
                 Velocidad: data.stats[5].base_stat,         //ToDo: Tiene que incluir los datos del tipo de pokemon al que está asociado.
                 Altura: data.height,
-                Peso: data.weight
+                Peso: data.weight,
+                Tipo: data.types.map(tipo => tipo.type.name)
             }
             return pokemon
         }
