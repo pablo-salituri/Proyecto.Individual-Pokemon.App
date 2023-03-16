@@ -1,16 +1,28 @@
 const axios = require('axios');
 const {Type} = require('../../db.js')
 const URL = 'https://pokeapi.co/api/v2/type';
-let arregloBDD = [];
-
 
 const getTypes = async() => {
     try {
+
+        const tipos = await Type.findAll({
+            attributes: ['Nombre']
+        });
+
+        if (tipos.length) {
+            console.log('De DB');
+            return tipos;
+        }
+
+        let arregloBDD = [];
         const respuesta = await axios.get(URL);
         const apiTypes = respuesta.data.results
         for (const tipo of apiTypes) {
             arregloBDD.push({Nombre: tipo.name})
         }
+
+        await Type.bulkCreate(arregloBDD);
+        console.log('De Api');
         return arregloBDD
     } catch (error) {
         return {error: 'No se puede acceder a los tipos de Pokemon'}
@@ -18,15 +30,15 @@ const getTypes = async() => {
 }
 
 
-const getAndSaveTypes = async() => {
+/* const getAndSaveTypes = async() => {
     try {
         const arregloTypes = await getTypes();
-        const saveTypes = await Type.bulkCreate(arregloTypes);
+        await Type.bulkCreate(arregloTypes);
         return arregloTypes
     } catch (error) {
         return {error: 'Error al completar la Base de Datos'}
     }
-}
+} */
 
 
-module.exports = {getAndSaveTypes}
+module.exports = {getTypes}

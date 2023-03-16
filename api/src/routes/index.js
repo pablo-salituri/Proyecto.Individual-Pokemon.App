@@ -1,11 +1,12 @@
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const {getAndSavePokemons} = require('../controllers/Pokemon/getPokemons.js');
+//const {getAndSavePokemons} = require('../controllers/Pokemon/getPokemons.js');
 const {getPokemonById} = require('../controllers/Pokemon/getPokemonById.js');
 const {getPokemonByName} = require('../controllers/Pokemon/getPokemonByName.js');
 const {postPokemons} = require('../controllers/Pokemon/postPokemons.js');
-const {getAndSaveTypes} = require('../controllers/Type/getTypes.js')
+const {getTypes} = require('../controllers/Type/getTypes.js');
+const {getAllPokemons} = require('../controllers/Pokemon/getAllPokemons.js');
 
 const router = Router();
 
@@ -15,7 +16,7 @@ const router = Router();
 // * Todas las rutas llegan con 'http://localhost:3001'                
 
 router.get('/pokemon', async (req, res) => {                            //ToDo: Modularizar las rutas
-        const respuesta = await getAndSavePokemons();
+        const respuesta = await getAllPokemons();
         if (!respuesta.error)
         return res.status(200).json(respuesta)    
         return res.status(503).json(respuesta)    
@@ -55,7 +56,7 @@ router.post('/pokemons', async(req, res) => {
 })
 
 router.get('/types', async(req, res) => {
-        const respuesta = await getAndSaveTypes();
+        const respuesta = await getTypes();
         if (!respuesta.error)
         return res.status(200).json(respuesta)
         return res.status(404).json(respuesta)

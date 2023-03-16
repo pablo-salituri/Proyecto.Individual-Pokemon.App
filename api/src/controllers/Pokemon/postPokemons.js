@@ -16,7 +16,7 @@ const postPokemons = async(Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Alt
 
         //Valido si el Nombre existe en la BDD
         if (await Pokemon.findOne({
-            where: {Nombre}
+            where: {Nombre: Nombre.toLowerCase()}
             })
         )
             return {error: 'No se pudo completar la carga porque ya existe un Pokemon con ese Nombre'}
