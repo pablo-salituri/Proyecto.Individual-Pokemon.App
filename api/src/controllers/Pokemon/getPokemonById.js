@@ -14,8 +14,14 @@ const getPokemonById = async (idPokemon) => {
                 through: {attributes:[]}
             }
         })                                               //ToDo: Arreglar como se muestran los tipos para los traidos desde la Api
-        if (respuestaDataBase)
-            return respuestaDataBase
+        if (respuestaDataBase) {
+            const respuesta = respuestaDataBase.toJSON();
+            const tipos = respuestaDataBase.Types.map(elem => elem.Nombre);
+            respuesta.Tipo = tipos;
+            //console.log(respuesta);
+            delete respuesta.Types;
+            return respuesta
+        }
         else {
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`);
             const data = response.data;
@@ -33,7 +39,6 @@ const getPokemonById = async (idPokemon) => {
             }
             return pokemon
         }
-        return ('mal')
     } catch (error) {
         return {error: 'No se encontró el pokemon con el Id solicitado'}
     }

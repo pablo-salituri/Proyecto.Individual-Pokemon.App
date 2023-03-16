@@ -26,7 +26,7 @@ const getPokemonByName = async (name) => {
                 Vida: data.stats[0].base_stat,
                 Ataque: data.stats[1].base_stat,
                 Defensa: data.stats[2].base_stat,
-                Velocidad: data.stats[5].base_stat,         //ToDo: Tiene que incluir los datos del tipo de pokemon al que está asociado.
+                Velocidad: data.stats[5].base_stat,
                 Altura: data.height,
                 Peso: data.weight,
                 Tipo: data.types.map(tipo => tipo.type.name)
