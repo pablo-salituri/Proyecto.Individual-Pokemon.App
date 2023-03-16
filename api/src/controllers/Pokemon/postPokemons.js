@@ -1,17 +1,17 @@
-// const axios = require('axios');         Es de la parte comentada del código
+const axios = require('axios');
 const URL = 'https://pokeapi.co/api/v2/pokemon/';
 const  {Pokemon, Type}  = require('../../db.js');
 //var i = 1;    Es de la parte comentada del código
 
 
-const postPokemons = async(ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo) => {
+const postPokemons = async(Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo) => {
     try {
         //Valido si el id existe en la BDD
-        if (await Pokemon.findOne({
+        /* if (await Pokemon.findOne({
             where: {ID}
             })
         )
-            return {error: 'No se pudo completar la carga porque ya existe un Pokemon con ese Id'}
+            return {error: 'No se pudo completar la carga porque ya existe un Pokemon con ese Id'} */
         
 
         //Valido si el Nombre existe en la BDD
@@ -48,9 +48,12 @@ const postPokemons = async(ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad,
         }
         while(i <= totalDePokemon) */
 
-        
+
+        const respuesta = await axios.get(URL);
+        const totalEnApi = respuesta.data.count
+                
         const newPokemon = await Pokemon.create({
-            ID,
+            ID: Math.max(totalEnApi, await Pokemon.max('ID')) + 1,
             Nombre: Nombre.toLowerCase(),
             Imagen,                
             Vida,                   
