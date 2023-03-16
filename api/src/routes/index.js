@@ -31,7 +31,7 @@ router.get('/pokemons/:idPokemon', async (req, res) => {
         return res.status(503).json(respuesta)
 })
 
-router.get(`/pokemons`, async(req, res) => {                    // ToDo: comparar con el otro proyecto
+router.get(`/pokemons`, async(req, res) => {
         const name = req.query.name.toLowerCase();
         //console.log(name);
         if (!name)

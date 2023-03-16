@@ -3,6 +3,7 @@ const URL = 'https://pokeapi.co/api/v2/pokemon/';
 const  {Pokemon}  = require('../../db.js')
 
 const getPokemonByName = async (name) => {
+    //console.log(name)
     try {
         const respuestaDataBase = await Pokemon.findOne({
             where: {
