@@ -13,7 +13,7 @@ const getPokemonById = async (idPokemon) => {
                 attributes: ['Nombre'],
                 through: {attributes:[]}
             }
-        })                                               //ToDo: Arreglar como se muestran los tipos para los traidos desde la Api
+        })
         if (respuestaDataBase) {
             const respuesta = respuestaDataBase.toJSON();
             const tipos = respuestaDataBase.Types.map(elem => elem.Nombre);

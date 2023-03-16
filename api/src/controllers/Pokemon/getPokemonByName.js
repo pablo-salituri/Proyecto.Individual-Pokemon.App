@@ -14,8 +14,14 @@ const getPokemonByName = async (name) => {
             }
         })
 
-        if (respuestaDataBase)
-            return respuestaDataBase
+        if (respuestaDataBase) {
+            const respuesta = respuestaDataBase.toJSON();
+            const tipos = respuestaDataBase.Types.map(elem => elem.Nombre);
+            respuesta.Tipo = tipos;
+            //console.log(respuesta);
+            delete respuesta.Types;
+            return respuesta
+        }
         else {
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
             const data = response.data;
