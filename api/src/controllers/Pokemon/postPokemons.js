@@ -6,14 +6,7 @@ const  {Pokemon, Type}  = require('../../db.js');
 
 const postPokemons = async(Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo) => {
     try {
-        //Valido si el id existe en la BDD
-        /* if (await Pokemon.findOne({
-            where: {ID}
-            })
-        )
-            return {error: 'No se pudo completar la carga porque ya existe un Pokemon con ese Id'} */
         
-
         //Valido si el Nombre existe en la BDD
         if (await Pokemon.findOne({
             where: {Nombre: Nombre.toLowerCase()}
@@ -48,6 +41,10 @@ const postPokemons = async(Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Alt
         }
         while(i <= totalDePokemon) */
 
+        // /*******************************************************************************************
+
+
+        // Genero un Id automático, partiendo del máximo existente en la Api y la DB
 
         const respuesta = await axios.get(URL);
         const totalEnApi = respuesta.data.count

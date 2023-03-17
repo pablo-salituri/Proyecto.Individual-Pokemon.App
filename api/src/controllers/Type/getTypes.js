@@ -30,15 +30,4 @@ const getTypes = async() => {
 }
 
 
-/* const getAndSaveTypes = async() => {
-    try {
-        const arregloTypes = await getTypes();
-        await Type.bulkCreate(arregloTypes);
-        return arregloTypes
-    } catch (error) {
-        return {error: 'Error al completar la Base de Datos'}
-    }
-} */
-
-
 module.exports = {getTypes}

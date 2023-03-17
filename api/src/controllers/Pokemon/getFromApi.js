@@ -8,6 +8,8 @@ const getPokemonsFromApi = async () => {
     try {      
         let pokemones = []
 
+        // Genera un arreglo con los primeros X pokemon de la Api. En cada posición está el detalle de cada Pokemon
+        
         for (let i = 1; i <= cantDeHojas; i++) {
             let response = await axios.get(URL);
             let data = response.data.results;

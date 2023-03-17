@@ -19,13 +19,13 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const {getAndSavePokemons} = require('./src/controllers/Pokemon/getPokemons.js');  //Agregado por mí
-const {getAndSaveTypes} = require('./src/controllers/Type/getTypes.js');  //Agregado por mí
+//const {getAndSavePokemons} = require('./src/controllers/Pokemon/getPokemons.js');  //Agregado por mí
+//const {getAndSaveTypes} = require('./src/controllers/Type/getTypes.js');  //Agregado por mí
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {        // ! TRUEEEEEEEEEEEEE
-  //getAndSavePokemons();                   //Agregado por mí   //! VER QUE HACER CON ESTO
-  //getAndSaveTypes();                      // Agregado por mí    //! VER QUE HACER CON ESTO
+conn.sync({ force: false }).then(() => {
+  //getAndSavePokemons();                   //Agregado por mí
+  //getAndSaveTypes();                      // Agregado por mí
   //console.log('Database Cargada');        // Agregado por mí    //! VER QUE HACER CON ESTO
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console

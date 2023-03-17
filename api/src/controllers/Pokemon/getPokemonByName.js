@@ -5,6 +5,9 @@ const  {Pokemon, Type}  = require('../../db.js')
 const getPokemonByName = async (name) => {
     //console.log(name)
     try {
+
+        // Busco inicialmente si el Pokemon se encuentra en la BDD
+
         const respuestaDataBase = await Pokemon.findOne({
             where: { Nombre: name },
             include: {
@@ -22,6 +25,9 @@ const getPokemonByName = async (name) => {
             delete respuesta.Types;
             return respuesta
         }
+
+        // Si no existe en la BDD, busco en la Api
+
         else {
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
             const data = response.data;
