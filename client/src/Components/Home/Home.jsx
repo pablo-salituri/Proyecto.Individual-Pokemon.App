@@ -80,7 +80,7 @@ export default function Home() {
                 )
             })
             }
-            <Paginado cantDePaginas={cantDePaginas} goToPage={goToPage}/>
+            <Paginado cantDePaginas={cantDePaginas} goToPage={goToPage} currentPage={currentPage}/>
         </div>
     )
 }
