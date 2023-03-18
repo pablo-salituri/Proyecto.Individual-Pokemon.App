@@ -2,7 +2,8 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getAllPokemons} from '../../Redux/actions';
-import SearchBar from '../SearchBar/SearchBar'
+import SearchBar from '../SearchBar/SearchBar';
+import Paginado from '../Paginado/Paginado';
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -10,16 +11,14 @@ export default function Home() {
     const pokemonsPerPage = 12;
     const cantDePaginas = Math.ceil(allPokemons.length/pokemonsPerPage);
     const [currentPage, setCurrentPage] = useState(1);
+
     const firstPokemonInPage = pokemonsPerPage * (currentPage - 1);
     const lastPokemonInPage = firstPokemonInPage + pokemonsPerPage;
     const pokemonsInPage = allPokemons.slice(firstPokemonInPage,lastPokemonInPage)
 
-    const arrayDePaginas = []
-    for (let i = 1; i <= cantDePaginas; i++)
-        arrayDePaginas.push(i)
-    //console.log(arrayDePaginas);
+    
 
-    function goToPage(num) {
+    const goToPage = (num) => {
         setCurrentPage(num)
     }
 
@@ -81,18 +80,7 @@ export default function Home() {
                 )
             })
             }
-            <section>
-                {
-                arrayDePaginas.map((num) => {
-                    //console.log(elem);
-                    return(
-                        <ul key={num}>
-                            <a href='' onClick={() => goToPage(num)}>{num}</a>
-                        </ul>
-                    )
-                })
-                }      
-            </section>
+            <Paginado cantDePaginas={cantDePaginas} goToPage={goToPage}/>
         </div>
     )
 }
