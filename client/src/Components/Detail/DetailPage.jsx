@@ -23,7 +23,7 @@ export default function DetailPage() {
             {Velocidad ? <h2>Velocidad: {Velocidad}</h2> : null}
             {Altura ? <h2>Altura: {Altura}</h2> : null}
             {Peso ? <h2>Peso: {Peso}</h2> : null}
-            <h2>{Tipo.length === 1 ? 'Tipo' : 'Tipos'}: {[Tipo].join(', ')}</h2>
+            <h2>Tipo: {Tipo ? Tipo.join(', ') : null}</h2>
         </div>
     )
 }

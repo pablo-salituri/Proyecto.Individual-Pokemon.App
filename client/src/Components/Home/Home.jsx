@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getAllPokemons} from '../../Redux/actions';
+import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 import Paginado from '../Paginado/Paginado';
 
@@ -74,9 +75,12 @@ export default function Home() {
             pokemonsInPage.map((pokemon, index) => {
                 return (
                     <div key={index}>
-                        <h2>{pokemon.Nombre}</h2>
-                        <img src={pokemon.Imagen} alt={pokemon.Name} />
-                    </div>      // Breakpoint
+                        <Link to={'/detailPage'}>
+                            <h2>{pokemon.Nombre}</h2>
+                            <img src={pokemon.Imagen} alt={pokemon.Name} />
+                            <h2>Tipo: {pokemon.Tipo ? pokemon.Tipo.join(', ') : null}</h2>
+                        </Link>
+                    </div>
                 )
             })
             }

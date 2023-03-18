@@ -23,7 +23,7 @@ export const getAllPokemons = () => {
 export const getPokemonDetail = () => {
     return async function(dispatch) {
         try {
-            const respuestaDelBack = await axios.get(`${URL}${4}`);
+            const respuestaDelBack = await axios.get(`${URL}${1}`);
             return dispatch({
                 type: GET_POKEMON_DETAIL,
                 payload: respuestaDelBack.data
