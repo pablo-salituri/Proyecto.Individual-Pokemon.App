@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect/* , useState  */} from 'react';
+import { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getAllPokemons} from '../../Redux/actions';
 import SearchBar from '../SearchBar/SearchBar'
@@ -7,6 +7,21 @@ import SearchBar from '../SearchBar/SearchBar'
 export default function Home() {
     const dispatch = useDispatch();
     const allPokemons = useSelector(state => state.allPokemons);
+    const pokemonsPerPage = 12;
+    const cantDePaginas = Math.ceil(allPokemons.length/pokemonsPerPage);
+    const [currentPage, setCurrentPage] = useState(1);
+    const firstPokemonInPage = pokemonsPerPage * (currentPage - 1);
+    const lastPokemonInPage = firstPokemonInPage + pokemonsPerPage;
+    const pokemonsInPage = allPokemons.slice(firstPokemonInPage,lastPokemonInPage)
+
+    const arrayDePaginas = []
+    for (let i = 1; i <= cantDePaginas; i++)
+        arrayDePaginas.push(i)
+    //console.log(arrayDePaginas);
+
+    function goToPage(num) {
+        setCurrentPage(num)
+    }
 
     useEffect(() => {
         dispatch(getAllPokemons());
@@ -57,16 +72,27 @@ export default function Home() {
 
             <h1>HomePage</h1>
             {
-            allPokemons.map((pokemon, index) => {
+            pokemonsInPage.map((pokemon, index) => {
                 return (
                     <div key={index}>
                         <h2>{pokemon.Nombre}</h2>
                         <img src={pokemon.Imagen} alt={pokemon.Name} />
-                    </div>
+                    </div>      // Breakpoint
                 )
             })
             }
+            <section>
+                {
+                arrayDePaginas.map((num) => {
+                    //console.log(elem);
+                    return(
+                        <ul key={num}>
+                            <a href='' onClick={() => goToPage(num)}>{num}</a>
+                        </ul>
+                    )
+                })
+                }      
+            </section>
         </div>
     )
-    
 }
