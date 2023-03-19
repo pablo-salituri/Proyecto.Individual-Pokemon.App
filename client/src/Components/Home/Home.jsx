@@ -75,7 +75,7 @@ export default function Home() {
             pokemonsInPage.map((pokemon, index) => {
                 return (
                     <div key={index}>
-                        <Link to={'/detailPage'}>
+                        <Link to={`/detailPage/${pokemon.ID}`}>
                             <h2>{pokemon.Nombre}</h2>
                             <img src={pokemon.Imagen} alt={pokemon.Name} />
                             <h2>Tipo: {pokemon.Tipo ? pokemon.Tipo.join(', ') : null}</h2>

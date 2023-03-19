@@ -20,10 +20,10 @@ export const getAllPokemons = () => {
 }
 
 
-export const getPokemonDetail = () => {
+export const getPokemonDetail = (ID) => {
     return async function(dispatch) {
         try {
-            const respuestaDelBack = await axios.get(`${URL}${1}`);
+            const respuestaDelBack = await axios.get(`${URL}${ID}`);
             return dispatch({
                 type: GET_POKEMON_DETAIL,
                 payload: respuestaDelBack.data
