@@ -1,4 +1,4 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, CLEAR_DETAIL} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN} from './types';
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/pokemons/';
@@ -44,7 +44,35 @@ export const clearDetail = () => {
                 payload: {}
             })
         } catch (error) {
-            
+            return dispatch({type: 'ERROR', payload: error})
+        }
+    }
+}
+
+
+export const filter = (tipo) => {
+    return async function(dispatch) {
+        try {
+            return dispatch({
+                type: FILTER,
+                payload: tipo
+            })
+        } catch (error) {
+            return dispatch({type: 'ERROR', payload: error})
+        }
+    }
+}
+
+
+export const filterByOrigin = (origen) => {
+    return async function(dispatch) {
+        try {
+            return dispatch({
+                    type: FILTER_BY_ORIGIN,
+                    payload: origen
+                })            
+        } catch (error) {
+            return dispatch({type: 'ERROR', payload: error})
         }
     }
 }

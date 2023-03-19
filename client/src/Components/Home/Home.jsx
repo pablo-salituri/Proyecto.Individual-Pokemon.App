@@ -5,20 +5,23 @@ import {getAllPokemons} from '../../Redux/actions';
 import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 import Paginado from '../Paginado/Paginado';
+import Filtros from '../Filtros/Filtros';
 
 export default function Home() {
     const dispatch = useDispatch();
-    const allPokemons = useSelector(state => state.allPokemons);
     const pokemonsPerPage = 12;
-    const cantDePaginas = Math.ceil(allPokemons.length/pokemonsPerPage);
+
+    const pokemonsPorFiltro = useSelector(state => state.filtro);
+    const pokemonsPorOrigen = useSelector(state => state.origen);
+    const pokemonsToRender = pokemonsPorFiltro.filter(pokefilter => pokemonsPorOrigen.some(pokeorigin => pokefilter.ID === pokeorigin.ID))
+
+    const cantDePaginas = Math.ceil(pokemonsToRender.length/pokemonsPerPage);
     const [currentPage, setCurrentPage] = useState(1);
 
     const firstPokemonInPage = pokemonsPerPage * (currentPage - 1);
     const lastPokemonInPage = firstPokemonInPage + pokemonsPerPage;
-    const pokemonsInPage = allPokemons.slice(firstPokemonInPage,lastPokemonInPage)
-
+    const pokemonsInPage = pokemonsToRender.slice(firstPokemonInPage,lastPokemonInPage)
     
-
     const goToPage = (num) => {
         setCurrentPage(num)
     }
@@ -30,49 +33,13 @@ export default function Home() {
     return(
         <div>
             <SearchBar />
-            <select name="Filtrar_tipo" id="Filtrar_tipo">
-                <option value="Todos">Mostrar Todos</option>
-                <option value="Bug">Bug</option>
-                <option value="Dark">Dark</option>
-                <option value="Dragon">Dragon</option>
-                <option value="Electric">Electric</option>
-                <option value="Fairy">Fairy</option>
-                <option value="Fighting">Fighting</option>
-                <option value="Fire">Fire</option>
-                <option value="Flying">Flying</option>
-                <option value="Ghost">Ghost</option>
-                <option value="Grass">Grass</option>
-                <option value="Ground">Ground</option>
-                <option value="Ice">Ice</option>
-                <option value="Normal">Normal</option>
-                <option value="Phychic">Phychic</option>
-                <option value="Poison">Poison</option>
-                <option value="Rock">Rock</option>
-                <option value="Shadow">Shadow</option>
-                <option value="Steel">Steel</option>
-                <option value="Unknown">Unknown</option>
-                <option value="Water">Water</option>
-            </select>
-
-            <select name="Filtrar_origen" id="Filtrar_origen">
-                <option value="Mostrar Todos">Mostrar Todos</option>
-                <option value="API">API</option>
-                <option value="Base de Datos">Base de Datos</option>
-            </select>
-
-            <select name="Ordenar" id="Ordenar">
-                <option value="Ascendente">Ascendente</option>
-                <option value="Descendente">Descendente</option>
-            </select>
-
-            <select name="Ordenar_por" id="Ordenar_por">
-                <option value="Nombre">Nombre</option>
-                <option value="Ataque">Ataque</option>
-            </select>
-
+            <Filtros />
             <h1>HomePage</h1>
+            {/* {console.log('filtro --> ',pokemonsPorFiltro)}
+            {console.log('origen --> ',pokemonsPorOrigen)} */}
             {
-            pokemonsInPage.map((pokemon, index) => {
+            pokemonsInPage.length
+            ? (pokemonsInPage.map((pokemon, index) => {
                 return (
                     <div key={index}>
                         <Link to={`/detailPage/${pokemon.ID}`}>
@@ -82,7 +49,8 @@ export default function Home() {
                         </Link>
                     </div>
                 )
-            })
+                }))                
+            : (<h2>No hay nada para mostrar</h2>)
             }
             <Paginado cantDePaginas={cantDePaginas} goToPage={goToPage} currentPage={currentPage}/>
         </div>
