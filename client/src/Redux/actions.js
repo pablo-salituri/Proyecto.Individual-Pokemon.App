@@ -1,4 +1,4 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, CLEAR_DETAIL} from './types';
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/pokemons/';
@@ -31,6 +31,20 @@ export const getPokemonDetail = (ID) => {
         }
         catch (error) {
             return dispatch({type: 'ERROR', payload: error})
+        }
+    }
+}
+
+
+export const clearDetail = () => {
+    return async function(dispatch) {
+        try {
+            return dispatch({
+                type: CLEAR_DETAIL,
+                payload: {}
+            })
+        } catch (error) {
+            
         }
     }
 }

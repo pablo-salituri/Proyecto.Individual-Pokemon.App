@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {getPokemonDetail} from '../../Redux/actions';
+import {getPokemonDetail, clearDetail} from '../../Redux/actions';
 import { useParams, useNavigate } from "react-router-dom";
 
 
@@ -16,9 +16,12 @@ export default function DetailPage() {
 
     useEffect(() => {
         dispatch(getPokemonDetail(detailId))
-        return () => console.log('Componente Desmontado');
-    },[detailId, dispatch])                                 //ToDo: Solucionar el Parpadeo de ejecución
-                                                            //Todo: Ver con estados locales
+        return () => {
+            dispatch(clearDetail())
+            console.log('Componente Desmontado')
+        }
+    },[detailId, dispatch])                                 //ToDo: Solucionar el Parpadeo de paginados
+                                                            
     return (                                                //Todo: Ver que al volver del detalle se renderice la ultima pagina visitada
         <div>
             <h1>Este es el Detail Page</h1>

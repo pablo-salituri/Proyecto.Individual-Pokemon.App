@@ -1,4 +1,4 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, CLEAR_DETAIL} from './types';
 
 const initialState = {
     allPokemons: [],
@@ -13,6 +13,11 @@ const reducer = (state = initialState, {type, payload}) => {
                 allPokemons: payload
             }
         case GET_POKEMON_DETAIL:
+            return {
+                ...state,
+                pokemon: payload
+            }
+        case CLEAR_DETAIL:
             return {
                 ...state,
                 pokemon: payload
