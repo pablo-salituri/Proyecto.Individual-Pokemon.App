@@ -1,4 +1,4 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY} from './types';
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/pokemons/';
@@ -71,6 +71,20 @@ export const filterByOrigin = (origen) => {
                     type: FILTER_BY_ORIGIN,
                     payload: origen
                 })            
+        } catch (error) {
+            return dispatch({type: 'ERROR', payload: error})
+        }
+    }
+}
+
+
+export const orderBy = (criterio) => {
+    return async function(dispatch) {
+        try {
+            return dispatch({
+                type: ORDER_BY,
+                payload: criterio
+            })
         } catch (error) {
             return dispatch({type: 'ERROR', payload: error})
         }

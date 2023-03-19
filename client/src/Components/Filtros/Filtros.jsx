@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { filter, filterByOrigin } from '../../Redux/actions'
+import { filter, filterByOrigin, orderBy } from '../../Redux/actions'
 
 
 export default function Filtros(){
@@ -18,8 +18,8 @@ export default function Filtros(){
     
     }
     
-    function handleOrderBy() {
-    
+    function handleOrderBy(event) {
+        dispatch(orderBy(event.target.value))
     }
 
     return(
