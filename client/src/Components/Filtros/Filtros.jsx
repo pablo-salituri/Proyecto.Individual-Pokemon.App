@@ -68,8 +68,8 @@ export default function Filtros(){
 
             <select name="Filtrar_origen" id="Filtrar_origen" onChange={handleOrigin}>
                 <option value="Mostrar Todos">Mostrar Todos</option>
-                <option value="API">API</option>
-                <option value="Base de Datos">Base de Datos</option>
+                <option value="API">Existentes</option>
+                <option value="Base de Datos">Creados</option>
             </select>
 
             <select name="Ordenar_por" id="Ordenar_por" onChange={handleOrderBy}>

@@ -26,26 +26,30 @@ const reducer = (state = initialState, {type, payload}) => {
                 ...state,
                 pokemon: payload
             }
-        case FILTER:
+        case FILTER: {
+            let cambio;
+            payload === 'Todos'
+            ? cambio = state.allPokemons
+            : cambio = state.allPokemons.filter(pokemon => pokemon.Tipo.some(tipo => tipo === payload))
             return {
                 ...state,
-                filtro: 
-                    payload === 'Todos'
-                    ? state.allPokemons
-                    : state.allPokemons.filter(pokemon => pokemon.Tipo.some(tipo => tipo === payload))
+                filtro: cambio 
             }
-        case FILTER_BY_ORIGIN:
+        }
+        case FILTER_BY_ORIGIN: {
+            let cambio;
+            payload === "Mostrar Todos"
+            ? cambio = state.allPokemons
+            : (
+                payload === "API"
+                ? cambio = state.allPokemons.filter(pokemon => !pokemon.Serial)
+                : cambio = state.allPokemons.filter(pokemon => pokemon.Serial)
+            )
             return {
                 ...state,
-                origen:
-                    payload === "Mostrar Todos"
-                    ? state.allPokemons
-                    : (
-                        payload === "API"
-                        ? state.allPokemons.filter(pokemon => !pokemon.Serial)
-                        : state.allPokemons.filter(pokemon => pokemon.Serial)
-                    )
+                origen: cambio
             }
+        }
         case ORDER_BY_ASC: {
         //console.log(payload);
             let filtroOrdenado = [];
