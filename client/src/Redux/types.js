@@ -3,4 +3,5 @@ export const GET_POKEMON_DETAIL = 'GET_POKEMON_DETAIL';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 export const FILTER = 'FILTER';
 export const FILTER_BY_ORIGIN = 'FILTER_BY_ORIGIN';
-export const ORDER_BY = 'ORDER_BY'
+export const ORDER_BY_ASC = 'ORDER_BY_ASC';
+export const ORDER_BY_DESC = 'ORDER_BY_DESC'

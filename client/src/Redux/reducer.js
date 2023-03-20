@@ -1,4 +1,4 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC} from './types';
 
 const initialState = {
     allPokemons: [],
@@ -46,7 +46,7 @@ const reducer = (state = initialState, {type, payload}) => {
                         : state.allPokemons.filter(pokemon => pokemon.Serial)
                     )
             }
-        case ORDER_BY: 
+        case ORDER_BY_ASC: {
         //console.log(payload);
             let filtroOrdenado = [];
             let origenOrdenado = [];
@@ -86,6 +86,48 @@ const reducer = (state = initialState, {type, payload}) => {
                 filtro: filtroOrdenado,
                 origen: origenOrdenado,
             }
+        }
+        case ORDER_BY_DESC: {
+        //console.log(payload);
+            let filtroOrdenado = [];
+            let origenOrdenado = [];
+            switch(payload) {
+                case 'Id':
+                    filtroOrdenado = state.filtro.slice().sort((a,b) => b.ID - a.ID);
+                    origenOrdenado = state.origen.slice().sort((a,b) => b.ID - a.ID);
+                    /* console.log('filtro --> ',filtroOrdenado);
+                    console.log('origen --> ',origenOrdenado); */
+                    break;
+                case 'Ataque':
+                    filtroOrdenado = state.filtro.slice().sort((a,b) => b.Ataque - a.Ataque);
+                    origenOrdenado = state.origen.slice().sort((a,b) => b.Ataque - a.Ataque);
+                    /* console.log('filtro --> ',filtroOrdenado);
+                    console.log('origen --> ',origenOrdenado); */
+                    break;
+                default:        //Nombre
+                    filtroOrdenado = state.filtro.slice().sort((a,b) => {
+                        if (a.Nombre < b.Nombre)
+                            return 1;
+                        if (a.Nombre > b.Nombre)
+                            return -1;
+                        return 0
+                    });
+                    origenOrdenado = state.origen.slice().sort((a,b) => {
+                        if (a.Nombre < b.Nombre)
+                            return 1;
+                        if (a.Nombre > b.Nombre)
+                            return -1;
+                        return 0
+                    })
+                    /* console.log('filtro --> ',filtroOrdenado);
+                    console.log('origen --> ',origenOrdenado); */
+            }
+            return {
+                ...state,
+                filtro: filtroOrdenado,
+                origen: origenOrdenado,
+            }
+        }
         default:
             return {...initialState};
     }
