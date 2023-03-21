@@ -1,5 +1,6 @@
 export const GET_ALL_POKEMONS = 'GET_ALL_POKEMONS';
 export const GET_POKEMON_DETAIL = 'GET_POKEMON_DETAIL';
+export const GET_POKEMON_BY_NAME =  'GET_POKEMON_BY_NAME';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 export const FILTER = 'FILTER';
 export const FILTER_BY_ORIGIN = 'FILTER_BY_ORIGIN';

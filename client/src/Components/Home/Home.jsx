@@ -18,7 +18,7 @@ export default function Home() {
     const cantDePaginas = Math.ceil(pokemonsToRender.length/pokemonsPerPage);
     const [currentPage, setCurrentPage] = useState(1);
 
-    const firstPokemonInPage = pokemonsPerPage * (currentPage - 1);
+    const firstPokemonInPage = pokemonsPerPage * (currentPage - 1);     
     const lastPokemonInPage = firstPokemonInPage + pokemonsPerPage;
     const pokemonsInPage = pokemonsToRender.slice(firstPokemonInPage,lastPokemonInPage)
     

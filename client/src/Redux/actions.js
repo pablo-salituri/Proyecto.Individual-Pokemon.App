@@ -1,4 +1,4 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC} from './types';
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/pokemons/';
@@ -20,7 +20,7 @@ export const getAllPokemons = () => {
 }
 
 
-export const getPokemonDetail = (ID) => {
+export const getPokemonDetail = (ID) => {       // Busca por Id
     return async function(dispatch) {
         try {
             const respuestaDelBack = await axios.get(`${URL}${ID}`);
@@ -30,6 +30,22 @@ export const getPokemonDetail = (ID) => {
             })
         }
         catch (error) {
+            return dispatch({type: 'ERROR', payload: error})
+        }
+    }
+}
+
+
+export const getPokemonByName = (Nombre) => {
+    return async function(dispatch) {
+        try {
+            const respuestaDelBack = await axios.get(`${URL}name?name=${Nombre}`);
+            //console.log(respuestaDelBack.data);
+            return dispatch({
+                type: GET_POKEMON_BY_NAME,
+                payload: respuestaDelBack.data
+            })
+        } catch (error) {
             return dispatch({type: 'ERROR', payload: error})
         }
     }
