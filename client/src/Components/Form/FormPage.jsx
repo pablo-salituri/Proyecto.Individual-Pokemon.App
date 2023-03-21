@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getTypes } from "../../Redux/actions";
-import styles from './FormPage.module.css'
+import styles from './FormPage.module.css';
+import validate from './Validate.js'
 
 
 export default function FormPage() {
@@ -22,18 +23,32 @@ export default function FormPage() {
         Tipo: []
     })
 
+    const {Nombre, Imagen, Vida, Ataque, Defensa, Tipo} = input;
+
+    const [errors, setErrors] = useState({
+        Nombre: '',
+        Imagen: '',
+        Vida: '',
+        Ataque: '',
+        Defensa: '',
+        Velocidad: '',
+        Altura: '',
+        Peso: '',
+        Tipo: ''
+    })
+
     useEffect(() => {
         dispatch(getTypes());
     },[dispatch])
 
+
     function handleInputChange(event) {
-        setInput({
-            ...input,
-            [event.target.name]: event.target.value
-        })
+        setInput({...input, [event.target.name]: event.target.value})
+        setErrors(validate({...input, [event.target.name]: event.target.value}))
     }
 
-    function handleCheckBox(event) {        //!BREAKPOINT NUM 3
+
+    function handleCheckBox(event) {       
         if (event.target.checked === true) {                        
             if (input.Tipo.length < maxTypes){
                 setInput({
@@ -54,40 +69,49 @@ export default function FormPage() {
         }
     }
 
+    function handleSubmit(event) {
+        event.preventDefault();
+        if (!Nombre || !Imagen || !Vida || !Ataque || !Defensa || !Tipo.length)
+            return window.alert('Faltan completar campos');
+        Object.keys(errors).length !== 0 
+        ? console.log('Hay campos con errrores')
+        : console.log('Todo bien')
+    }
+
+
     return(
         <div>
             <h1>Este es el Form Page</h1>
-            <form  className = {styles.Form}/* onSubmit={handleSubmit} */>
-                <label htmlFor="Nombre">Nombre</label>
+            <h6>* : Campos Obligatorios</h6>
+            <form  className = {styles.Form} onSubmit={handleSubmit}>
+                <label htmlFor="Nombre">Nombre*</label>
                 <input placeholder='Nombre' 
                     name='Nombre' 
                     type="text" 
                     value={input.Nombre} 
-                    //autoComplete='off'
+                    autoComplete='off'
                     onChange={handleInputChange}
                     //className = {(errors.username && styles.warning) || styles.input}    
                 />
                 {/* <p className={styles.danger}>{errors.username}</p> */}
                 
 
-                <label htmlFor="Imagen">Imagen</label>
+                <label htmlFor="Imagen">Imagen*</label>
                 <input placeholder='Imagen' 
                     name = 'Imagen' 
-                    type="url"                     
+                    type="text"                     
                     value={input.Imagen} 
-                    //autoComplete='off'
+                    autoComplete='off'
                     onChange={handleInputChange}
                     //className = {(errors.password && styles.warning) || styles.input}    
                 />
                 {/* <p className={styles.danger}>{errors.password}</p> */}
 
 
-                <label htmlFor="Vida">Vida</label>
+                <label htmlFor="Vida">Vida*</label>
                 <input placeholder='Vida' 
                     name = 'Vida' 
                     type="Number" 
-                    min='1'
-                    max='99'
                     value={input.Vida} 
                     //autoComplete='off'
                     onChange={handleInputChange}
@@ -96,12 +120,10 @@ export default function FormPage() {
                 {/* <p className={styles.danger}>{errors.password}</p> */}
 
 
-                <label htmlFor="Ataque">Ataque</label>
+                <label htmlFor="Ataque">Ataque*</label>
                 <input placeholder='Ataque' 
                     name = 'Ataque' 
                     type="Number" 
-                    min='1'
-                    max='99'
                     value={input.Ataque} 
                     //autoComplete='off'
                     onChange={handleInputChange}
@@ -110,12 +132,10 @@ export default function FormPage() {
                 {/* <p className={styles.danger}>{errors.password}</p> */}
 
 
-                <label htmlFor="Defensa">Defensa</label>
+                <label htmlFor="Defensa">Defensa*</label>
                 <input placeholder='Defensa' 
                     name = 'Defensa' 
                     type="Number" 
-                    min='1'
-                    max='99'
                     value={input.Defensa} 
                     //autoComplete='off'
                     onChange={handleInputChange}
@@ -128,8 +148,6 @@ export default function FormPage() {
                 <input placeholder='Velocidad' 
                     name = 'Velocidad' 
                     type="Number" 
-                    min='1'
-                    max='99'
                     value={input.Velocidad} 
                     //autoComplete='off'
                     onChange={handleInputChange}
@@ -142,7 +160,6 @@ export default function FormPage() {
                 <input placeholder='Altura' 
                     name = 'Altura' 
                     type="Number" 
-                    min='5'
                     value={input.Altura} 
                     //autoComplete='off'
                     onChange={handleInputChange}
@@ -155,7 +172,6 @@ export default function FormPage() {
                 <input placeholder='Peso' 
                     name = 'Peso' 
                     type="Number" 
-                    min='50'
                     value={input.Peso} 
                     //autoComplete='off'
                     onChange={handleInputChange}
