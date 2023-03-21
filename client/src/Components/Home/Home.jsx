@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getAllPokemons} from '../../Redux/actions';
+import {getAllPokemons, getTypes} from '../../Redux/actions';
 import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 import Paginado from '../Paginado/Paginado';
@@ -28,6 +28,7 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(getAllPokemons());
+        dispatch(getTypes());
     },[dispatch]);
 
     return(

@@ -1,7 +1,8 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES} from './types';
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/pokemons/';
+const URLtypes = 'http://localhost:3001/types'
 
 
 export const getAllPokemons = () => {
@@ -114,6 +115,21 @@ export const orderByDesc = (criterio) => {
             return dispatch({
                 type: ORDER_BY_DESC,
                 payload: criterio
+            })
+        } catch (error) {
+            return dispatch({type: 'ERROR', payload: error})
+        }
+    }
+}
+
+
+export const getTypes = () => {
+    return async function(dispatch) {
+        try {
+            const respuestaDelBack = await axios.get(URLtypes);
+            return dispatch({
+                type: GET_TYPES,
+                payload: respuestaDelBack.data
             })
         } catch (error) {
             return dispatch({type: 'ERROR', payload: error})

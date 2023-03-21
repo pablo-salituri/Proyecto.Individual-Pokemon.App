@@ -1,7 +1,8 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES} from './types';
 
 const initialState = {
     allPokemons: [],
+    tipos: [],
     pokemon: [],
     filtro: [],     //Este es el filtro por tipo, pero no quería abusar de la palabra "tipo" en la aplicación
     origen: []
@@ -15,6 +16,19 @@ const reducer = (state = initialState, {type, payload}) => {
                 allPokemons: payload,
                 filtro: payload,
                 origen: payload
+            }
+        case GET_TYPES:
+            const tipos = payload.map(tipo => tipo.Nombre);
+            tipos.sort((a,b) => {
+                if (a > b)
+                    return 1;
+                if (a < b)
+                    return -1;
+                return 0
+            });
+            return {
+                ...state,
+                tipos: tipos
             }
         case GET_POKEMON_DETAIL:
             return {
@@ -72,7 +86,7 @@ const reducer = (state = initialState, {type, payload}) => {
                     /* console.log('filtro --> ',filtroOrdenado);
                     console.log('origen --> ',origenOrdenado); */
                     break;
-                default:        //Nombre
+                default:        //*Nombre
                     filtroOrdenado = state.filtro.slice().sort((a,b) => {
                         if (a.Nombre > b.Nombre)
                             return 1;
