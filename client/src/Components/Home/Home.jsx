@@ -21,19 +21,20 @@ export default function Home() {
     const firstPokemonInPage = pokemonsPerPage * (currentPage - 1);     
     const lastPokemonInPage = firstPokemonInPage + pokemonsPerPage;
     const pokemonsInPage = pokemonsToRender.slice(firstPokemonInPage,lastPokemonInPage)
-    
+
     const goToPage = (num) => {
         setCurrentPage(num)
-    }
-
+    }                            
     useEffect(() => {
+        document.body.style.background = "url('https://www.teahub.io/photos/full/193-1931528_rick-y-morty-fondo-de-pantalla-pc.jpg') no-repeat center center fixed";
+        document.body.style.backgroundSize = "cover";
         dispatch(getAllPokemons());
         dispatch(getTypes());
     },[dispatch]);
 
     return(
         <div>
-            <SearchBar />
+            <SearchBar />                       
             <Filtros />
             <h1>HomePage</h1>
             {/* {console.log('filtro --> ',pokemonsPorFiltro)}
