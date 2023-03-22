@@ -17,7 +17,6 @@ export default function DetailPage() {
 
     //* Traigo los datos del componente global, independientemente de si la solicitud se hizo por query o params
     const {ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo} = useSelector(state => state.pokemon)
-    //const pokeDatos = useSelector(state => state.pokemon)
 
     function back() {
         navigate(-1)
