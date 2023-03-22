@@ -6,4 +6,5 @@ export const FILTER = 'FILTER';
 export const FILTER_BY_ORIGIN = 'FILTER_BY_ORIGIN';
 export const ORDER_BY_ASC = 'ORDER_BY_ASC';
 export const ORDER_BY_DESC = 'ORDER_BY_DESC';
-export const GET_TYPES = 'GET_TYPES'
+export const GET_TYPES = 'GET_TYPES';
+export const CREATE_POKEMON = 'CREATE_POKEMON'

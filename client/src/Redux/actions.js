@@ -1,4 +1,4 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES/* , CREATE_POKEMON */} from './types';
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/pokemons/';
@@ -133,6 +133,19 @@ export const getTypes = () => {
             })
         } catch (error) {
             return dispatch({type: 'ERROR', payload: error})
+        }
+    }
+}
+
+
+export const createPokemon = (pokemon) => {
+    return async function(dispatch) {
+        try {
+            const respuestaDelBack = await axios.post(URL, pokemon);
+            console.log(respuestaDelBack);
+            return respuestaDelBack
+        } catch (error) {
+            return dispatch({type: 'ERROR', payload: error})            
         }
     }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getTypes } from "../../Redux/actions";
+import { getTypes,createPokemon } from "../../Redux/actions";
 import styles from './FormPage.module.css';
 import validate from './Validate.js'
 
@@ -73,9 +73,12 @@ export default function FormPage() {
         event.preventDefault();
         if (!Nombre || !Imagen || !Vida || !Ataque || !Defensa || !Tipo.length)
             return window.alert('Faltan completar campos');
-        Object.keys(errors).length !== 0 
-        ? console.log('Hay campos con errrores')
-        : console.log('Todo bien')
+        if (Object.keys(errors).length !== 0) 
+            console.log('Hay campos con errrores')
+        else {
+            console.log('Todo bien');
+            dispatch(createPokemon(input))
+        } 
     }
 
 
