@@ -1,0 +1,28 @@
+.button {
+    width: 4.3em;
+    aspect-ratio: 1 / 1;
+    border: none;
+    border-radius: 50%;
+    animation-name: changeColor;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+}
+
+.div {
+    position: absolute;
+    top: 75.3%;
+    left: 53.45%;
+}
+
+
+@keyframes changeColor {
+    0% {
+      background-color: rgb(220, 220, 220);
+    }
+    50% {
+      background-color: red;
+    }
+    100% {
+        background-color: rgb(220, 220, 220);
+    }
+  }
