@@ -58,12 +58,14 @@ const postPokemons = async(Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Alt
             Defensa,
             Velocidad,
             Altura,
-            Peso,
+            Peso,                       
         })
 
-        const tipo = await Type.findOne({where: {Nombre: Tipo}});
+        for (const cadaTipo of Tipo) {
+            const tipo = await Type.findOne({where: {Nombre: cadaTipo}});
+            await newPokemon.addType(tipo)    
+        }
 
-        await newPokemon.addType(tipo)
 
         return newPokemon
     } catch (error) {
