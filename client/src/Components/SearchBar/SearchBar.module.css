@@ -1,0 +1,28 @@
+.div {
+    /* background-color: blue; */
+    margin-top: 3em;
+    margin-bottom: 3em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    gap: 1.2em;
+    align-items: center;
+}
+
+.input {
+    height: 2.5em;
+    width: 22em;
+    border-radius: 1.7em;
+    font-size: 1.2em;
+    padding-left: 2em;
+    background-color: rgb(240, 240, 240);
+    border: 1.5px solid black
+}
+
+.input::placeholder {
+    font-size: 1em;
+  }
+
+.pokedex {
+    height: 3.5em;
+}

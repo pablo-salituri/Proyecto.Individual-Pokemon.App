@@ -54,13 +54,13 @@ export default function Home() {
                             />
                         ))}
                     </section>
-                    <section>
+                    <section className={styles.paginado}>
                         <Paginado cantDePaginas={cantDePaginas} goToPage={goToPage} currentPage={currentPage} />
                     </section>                  
                 </div>
             )                
             : (
-                <div className={styles.section}>
+                <div className={styles.gifs}>
                     <img className={styles.charizard} src={loadingGif} alt="gif_carga_charizard" /> 
                     <img className={styles.loading} src={cargando} alt="gif_carga_bar" />
                 </div>

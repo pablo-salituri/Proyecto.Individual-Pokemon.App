@@ -1,4 +1,4 @@
-.section {
+.gifs {
     background-color: red;
     display: flex;
     flex-direction: column;
@@ -33,4 +33,9 @@
     position: absolute;
     scale: 6;
     top: 160vh
+}
+
+.paginado {
+    margin-top: 5em;
+    margin-bottom: 4em;
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { filter, filterByOrigin, orderByAsc, orderByDesc } from '../../Redux/actions'
+import { filter, filterByOrigin, orderByAsc, orderByDesc } from '../../Redux/actions';
+import styles from './Filtros.module.css'
 
 
 export default function Filtros(){
@@ -40,9 +41,9 @@ export default function Filtros(){
     },[orden, ordenPor, dispatch])
 
     return(
-        <div>
+        <div className = {styles.div}>
             {/* {console.log('1',orden)} */}
-            <select name="Filtrar_tipo" id="Filtrar_tipo" onChange={handleFilter}>
+            <select className = {styles.porTipo} name="Filtrar_tipo" id="Filtrar_tipo" onChange={handleFilter}>
                 <option value="Todos">Mostrar Todos</option>
                 <option value="bug">Bug</option>
                 <option value="dark">Dark</option>
@@ -66,19 +67,19 @@ export default function Filtros(){
                 <option value="water">Water</option>
             </select>
 
-            <select name="Filtrar_origen" id="Filtrar_origen" onChange={handleOrigin}>
+            <select className = {styles.porOrigen} name="Filtrar_origen" id="Filtrar_origen" onChange={handleOrigin}>
                 <option value="Mostrar Todos">Mostrar Todos</option>
                 <option value="API">Existentes</option>
                 <option value="Base de Datos">Creados</option>
             </select>
 
-            <select name="Ordenar_por" id="Ordenar_por" onChange={handleOrderBy}>
+            <select className = {styles.porCriterio} name="Ordenar_por" id="Ordenar_por" onChange={handleOrderBy}>
                 <option value="Id">Id</option>
                 <option value="Nombre">Nombre</option>
                 <option value="Ataque">Ataque</option>
             </select> 
 
-            <select name="Ordenar" id="Ordenar" onChange={handleOrder}>
+            <select className = {styles.porAsc} name="Ordenar" id="Ordenar" onChange={handleOrder}>
                 <option value="Ascendente">Ascendente</option>
                 <option value="Descendente">Descendente</option>
             </select>  
