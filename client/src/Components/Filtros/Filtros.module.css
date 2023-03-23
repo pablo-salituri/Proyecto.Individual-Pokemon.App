@@ -1,7 +1,8 @@
 .div {
     display: flex;
     justify-content: center;
-    gap: 5em
+    gap: 5em;
+    margin-bottom: 2em;
 }
 
 .porTipo, .porOrigen, .porCriterio, .porAsc {
@@ -26,5 +27,14 @@
 
 .porAsc {
     background-color: rgba(227, 227, 11, 0.8);
+}
+
+.parrafo {
+    margin-top: 0em;
+    margin-bottom: 0.4em;
+}
+
+.charmander, .bulbasaur, .squirtle, .pikachu {
+    height: 2.2em;
 }
 

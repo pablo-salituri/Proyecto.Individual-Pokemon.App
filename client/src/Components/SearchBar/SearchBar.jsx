@@ -13,7 +13,7 @@ export default function SearchBar() {
         setBusqueda(event.target.value)
     }
 
-    return (                                    //!BREAKPOINT
+    return (                                   
         <div className={styles.div}>
             <input placeholder="Busca un Pokemon en tu pokedex..." className={styles.input} type="search" value={busqueda} onChange={handleInput}/>
             <Link to={`/DetailPage/search?name=${busqueda}`}>
