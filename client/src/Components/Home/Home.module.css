@@ -18,7 +18,9 @@
     column-gap: 2em;
     row-gap: 2em;
     justify-content: center;
-    background-color: rgba(0, 0, 255, 0.227);
+    /* background-color: rgba(0, 0, 255, 0.227); */
+    margin-top: 3em;
+    margin-bottom: 3em;
 }
 
 .charizard{
