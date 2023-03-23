@@ -1,0 +1,19 @@
+.cards {
+    background-color: rgba(255, 0, 0, 0.518);
+    height: 20em;
+    aspect-ratio: 1/1.3;
+    border: 1px solid black;
+    border-radius: 1em;
+}
+
+.cardImg {
+    width: 80%;
+    border: solid 1px black;
+}
+
+.cardName {
+    margin-left: calc(10%);             /* //*Ajustar al % de cardImg */
+    text-align: left;
+    margin-bottom: 0.45em;
+    margin-top: 0.45em;
+}

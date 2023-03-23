@@ -36,23 +36,27 @@ export default function Home() {
     },[dispatch]);
 
     return(
-        <div className={styles.div}>
+        <div className={styles.divGlobal}>
             <SearchBar />                       
-            <Filtros />
+            <Filtros />                
             {
             pokemonsInPage.length 
             ? (
                 <div>
-                  {pokemonsInPage.map((pokemon, index) => (
-                    <HomeCards
-                      key={index}
-                      ID={pokemon.ID}
-                      Nombre={pokemon.Nombre}
-                      Imagen={pokemon.Imagen}
-                      Tipo={pokemon.Tipo}
-                    />
-                  ))}
-                  <Paginado cantDePaginas={cantDePaginas} goToPage={goToPage} currentPage={currentPage} />
+                    <section  className={styles.sectionCards}>
+                        {pokemonsInPage.map((pokemon, index) => (
+                            <HomeCards
+                            key={index}
+                            ID={pokemon.ID}
+                            Nombre={pokemon.Nombre}
+                            Imagen={pokemon.Imagen}
+                            Tipo={pokemon.Tipo}
+                            />
+                        ))}
+                    </section>
+                    <section>
+                        <Paginado cantDePaginas={cantDePaginas} goToPage={goToPage} currentPage={currentPage} />
+                    </section>                  
                 </div>
             )                
             : (

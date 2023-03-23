@@ -6,10 +6,19 @@
     height: fit-content;
 }
 
-.div {
+.divGlobal {
     display: flex;
     flex-direction: column;
     align-self: center;
+}
+
+.sectionCards {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2em;
+    row-gap: 2em;
+    justify-content: center;
+    background-color: rgba(0, 0, 255, 0.227);
 }
 
 .charizard{
