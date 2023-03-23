@@ -1,6 +1,6 @@
 .button {
-    width: 4.9em;
-    aspect-ratio: 1 / 1;
+    width: 7vh;
+    aspect-ratio: 1.15 / 1;
     border: none;
     border-radius: 50%;
     animation-name: changeColor;
@@ -15,7 +15,7 @@
 
 .div {
     position: absolute;
-    top: 79.2%;
+    top: 75.3%;
     left: 53.03%;
 }
 

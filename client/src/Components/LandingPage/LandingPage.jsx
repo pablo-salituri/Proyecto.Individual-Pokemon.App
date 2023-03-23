@@ -4,11 +4,11 @@ import { useEffect } from 'react';
 import styles from './LandingPage.module.css'
 
 
-export default function LandingPage() {     
+export default function LandingPage() {            
 
     useEffect(() => {
-        document.body.style.background = "url('https://images4.alphacoders.com/115/1159692.jpg') no-repeat center center fixed";
-        document.body.style.backgroundSize = "cover";
+        document.body.style.background = "url('https://images4.alphacoders.com/115/1159692.jpg')";
+        document.body.style.backgroundSize = "100% 100%";
     },[])
 
     return(
