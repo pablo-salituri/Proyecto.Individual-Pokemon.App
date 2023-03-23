@@ -1,0 +1,25 @@
+.section {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    scale: 25%;
+    height: fit-content;
+}
+
+.div {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.charizard{
+    position: absolute;
+    scale: 300%;
+    top: 70vh
+}
+
+.loading {
+    position: absolute;
+    scale: 6;
+    top: 160vh
+}
