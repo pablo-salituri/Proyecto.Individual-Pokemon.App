@@ -47,8 +47,28 @@ export default function FormPage() {
         
     useEffect(() => {
         if (erroresReducer.length)
-            window.alert(erroresReducer)
+            window.alert(erroresReducer);
+        if (erroresReducer === `FELICITACIONES!\nPokemon creado con éxito`)
+            clearFields()
     }, [erroresReducer]);
+
+
+    function clearFields() {        //!BREAKPOINT
+        setInput({
+            Nombre: '',
+            Imagen: '',
+            Vida: '',
+            Ataque: '',
+            Defensa: '',
+            Velocidad: '',
+            Altura: '',
+            Peso: '',
+            Tipo: []
+        });
+        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        for (const caja of checkboxes) 
+            caja.checked = false
+    }
 
 
     function handleInputChange(event) {
