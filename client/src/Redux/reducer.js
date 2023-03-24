@@ -5,7 +5,8 @@ const initialState = {
     tipos: [],
     pokemon: [],
     filtro: [],     //Este es el filtro por tipo, pero no quería abusar de la palabra "tipo" en la aplicación
-    origen: []
+    origen: [],      
+    erroresBack: []
 }
 
 const reducer = (state = initialState, {type, payload}) => {
@@ -155,7 +156,11 @@ const reducer = (state = initialState, {type, payload}) => {
             return {
                 ...state
             }
-
+        case 'ERROR':
+            return {
+                ...state,
+                erroresBack: payload
+            }
         default:
             return {...state};
             //return {...initialState};

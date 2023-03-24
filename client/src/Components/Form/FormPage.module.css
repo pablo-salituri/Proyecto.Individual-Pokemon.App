@@ -4,3 +4,65 @@
     justify-content: center;
     align-items: center;
 }
+
+.divInputs {
+    display: flex;
+    gap: 15em
+}
+
+.sectionInputs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+}
+
+.sectionInput {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+    align-items: center;
+}
+
+.inputs {
+    height: 2em;
+    width: 20em;
+    border-radius: 2em;
+}
+
+.divTypes {
+    display: flex;                 
+    flex-direction: column;
+    margin-top: 4em;
+    row-gap: 2em;
+    scale: 140%;
+    align-items: center;
+}
+
+.sectionTypes {
+    display: flex;
+    column-gap: 2em;
+}
+
+.button {
+    margin-top: 5em;
+}
+
+.pokebola{
+    height: 7em;
+    margin-top: 3em;
+}
+
+
+.warning {
+    border: solid red 2px;
+    height: 2em;
+    width: 20em;
+    border-radius: 2em;
+}
+  
+
+.danger {
+    color: blue;
+    font-size: 1em;
+    margin-top: 0;
+}

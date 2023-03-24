@@ -66,8 +66,7 @@ const postPokemons = async(Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Alt
             await newPokemon.addType(tipo)    
         }
 
-
-        return newPokemon
+        return {message: `FELICITACIONES!\nPokemon creado con éxito`}
     } catch (error) {
         return {error: 'No se pudo agregar el pokemon solicitado'}
     }

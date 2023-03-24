@@ -52,7 +52,7 @@ router.post('/', async(req, res) => {
         //else return res.status(200).json({message: "todo bien"})
         const respuesta = await postPokemons(Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo)  
         if (!respuesta.error)
-        return res.status(200).json(respuesta)
+        return res.status(200).json(respuesta)  
         return res.status(503).json(respuesta)
 })
 
