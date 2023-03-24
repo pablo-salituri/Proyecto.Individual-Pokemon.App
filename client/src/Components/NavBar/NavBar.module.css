@@ -1,8 +1,12 @@
 .div {
     height: 10vh;
-    border: 1px solid black;
     display: flex;
     justify-content: space-around;
+    background: linear-gradient(45deg, rgba(0, 0, 255, 0.6), rgba(0, 128, 0, 0.6), rgba(255, 255, 0, 0.6), rgba(255, 0, 0, 0.6));
+    background-size: 400% 400%;
+    position: relative;
+    animation: cambiar 30s infinite;
+    animation-timing-function: linear;
 }
 
 .imglinks {
@@ -11,4 +15,10 @@
 
 .link {
     display: flex;
+}
+
+@keyframes cambiar{
+    0%{background-position: 0 50%}
+    50%{background-position: 100% 50%}
+    100%{background-position: 0 50%}
 }
