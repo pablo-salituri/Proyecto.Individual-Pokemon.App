@@ -44,7 +44,7 @@ export default function Filtros(){
         : dispatch(orderByDesc(ordenPor)) 
     },[orden, ordenPor, dispatch])
 
-    return(                                         //!BREAKPOINT
+    return(                                         
         <div className = {styles.div}>
             {/* {console.log('1',orden)} */}
             <section>

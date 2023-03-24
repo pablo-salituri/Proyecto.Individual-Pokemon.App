@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {getPokemonDetail, getPokemonByName, clearDetail} from '../../Redux/actions';
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import CardDetail from "../CardDetail/CardDetail";
+import pokedex from './pokedex.png';
+import styles from './DetailPage.module.css'
 
 
 export default function DetailPage() {
@@ -31,26 +33,29 @@ export default function DetailPage() {
 
         return () => {
             dispatch(clearDetail())
-            console.log('Componente Desmontado')
+            console.log('Componente Desmontado')      
         }
     },[nombreQuery, location.search, detailId, dispatch])                                 //ToDo: Solucionar el Parpadeo de paginados
                                                             
     return (                                                //Todo: Ver que al volver del detalle se renderice la ultima pagina visitada
-        <div>                                               
-            <h1>Este es el Detail Page</h1>
-            <CardDetail 
-                Id = {ID}
-                Nombre = {Nombre}
-                Imagen = {Imagen}
-                Vida = {Vida}
-                Ataque = {Ataque}
-                Defensa = {Defensa}
-                Velocidad = {Velocidad}
-                Altura = {Altura}
-                Peso = {Peso}
-                Tipo = {Tipo}
-            />
-            <button onClick={back}>Volver</button>
+        <div className={styles.contenedor}>                                                
+            <img className={styles.pokedex} src={pokedex} alt="pokedex" />
+            <section className={styles.centrado}>
+                {console.log(Nombre)}
+                <CardDetail
+                    Id = {ID}
+                    Nombre = {Nombre}
+                    Imagen = {Imagen}
+                    Vida = {Vida}
+                    Ataque = {Ataque}
+                    Defensa = {Defensa}
+                    Velocidad = {Velocidad}
+                    Altura = {Altura}
+                    Peso = {Peso}
+                    Tipo = {Tipo}
+                />
+                <button onClick={back}>Volver</button>
+            </section>
         </div>
     )
 }

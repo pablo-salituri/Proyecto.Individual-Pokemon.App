@@ -5,7 +5,7 @@ import React from "react";
 export default function CardDetail({ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo}) {
     return(
         <div>
-            <h2>Este es el Card Detail</h2>
+            {/* {console.log('aca', ID)} */}
             <h2>Id: {ID}</h2>
             <h2>Nombre: {Nombre}</h2>
             <img src={Imagen} alt={Nombre} />
