@@ -138,14 +138,14 @@ export const getTypes = () => {
 }
 
 
-export const createPokemon = (pokemon) => {
+export const createPokemon = (pokemon) => {                 
     return async function(dispatch) {
         try {
             const respuestaDelBack = await axios.post(URL, pokemon);
             console.log(respuestaDelBack.data.message);
-            return dispatch({type: 'ERROR', payload: respuestaDelBack.data.message})
+            return respuestaDelBack.data.message
         } catch (error) {                   
-            return dispatch({type: 'ERROR', payload: error.response.data.error})            
+            return error.response.data.error
             //console.log('action -> ',error.response.data.error);
         }
     }

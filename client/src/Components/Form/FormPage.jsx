@@ -9,7 +9,7 @@ import validate from './Validate.js'
 export default function FormPage() {
 
     const dispatch = useDispatch();
-    const erroresReducer = useSelector(state => state.erroresBack);
+    //const erroresReducer = useSelector(state => state.erroresBack);
     const types = useSelector(state => state.tipos);
     const maxTypes = 3;
     const [input, setInput] = useState({
@@ -35,7 +35,7 @@ export default function FormPage() {
         Velocidad: '',
         Altura: '',
         Peso: '',
-        Tipo: ''
+        Tipo: ''                        
     })                                  
 
     useEffect(() => {
@@ -44,13 +44,12 @@ export default function FormPage() {
         dispatch(getTypes());
     },[dispatch])
 
-        
-    useEffect(() => {
+    /* useEffect(() => {
         if (erroresReducer.length)
             window.alert(erroresReducer);
         if (erroresReducer === `FELICITACIONES!\nPokemon creado con éxito`)
             clearFields()
-    }, [erroresReducer]);
+    }, [erroresReducer]); */
 
 
     function clearFields() {       
@@ -86,7 +85,7 @@ export default function FormPage() {
                 })
             }
             else {
-                window.alert(`No se pueden escoger más de ${maxTypes} tipos`);       //Todo: Avisar cuando hay mas de 3 tipos
+                window.alert(`No se pueden escoger más de ${maxTypes} tipos`);      
                 event.target.checked = false
             }
         }
@@ -96,17 +95,20 @@ export default function FormPage() {
                 Tipo: input.Tipo.filter(tipo => tipo !== event.target.name)
             })
         }
-    }
+    }                                   
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         if (!Nombre || !Imagen || !Vida || !Ataque || !Defensa || !Tipo.length)
             return window.alert(`Faltan completar campos`);
         if (Object.keys(errors).length !== 0) 
-            console.log('Hay campos con errrores')
+            return window.alert('Hay campos con errrores')
         else {
             console.log('Campos ok');           
-            dispatch(createPokemon(input))
+            const message = await dispatch(createPokemon(input));
+            window.alert(message);
+            if (message === `FELICITACIONES!\nPokemon creado con éxito`)
+                clearFields()
         } 
     }
 
