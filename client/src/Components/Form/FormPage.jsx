@@ -53,7 +53,7 @@ export default function FormPage() {
     }, [erroresReducer]);
 
 
-    function clearFields() {        //!BREAKPOINT
+    function clearFields() {       
         setInput({
             Nombre: '',
             Imagen: '',
