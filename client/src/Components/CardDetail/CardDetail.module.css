@@ -1,0 +1,34 @@
+.detailOneDiv {
+    width: 100%;
+}
+
+
+.detailOneSection {
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.detailTwoDiv {
+    width: 100%;
+    height: 100%;
+    font-size: 0.65em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detailTwoDivDatos {
+    display: flex;
+}
+
+
+.detailOneImg {
+    height: 60%;
+}
+
+
+.detailTwoH2 {
+    margin: 0;
+}

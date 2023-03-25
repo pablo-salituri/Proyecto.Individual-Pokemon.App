@@ -1,21 +1,15 @@
 import React from "react";
-
+import styles from './CardDetail.module.css'
 
     
-export default function CardDetail({ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo}) {
-    return(
-        <div>
-            {/* {console.log('aca', ID)} */}
-            <h2>Id: {ID}</h2>
-            <h2>Nombre: {Nombre}</h2>
-            <img src={Imagen} alt={Nombre} />
-            <h2>Vida: {Vida}</h2>
-            <h2>Ataque: {Ataque}</h2>
-            <h2>Defensa: {Defensa}</h2>
-            {Velocidad ? <h2>Velocidad: {Velocidad}</h2> : null}
-            {Altura ? <h2>Altura: {Altura}</h2> : null}
-            {Peso ? <h2>Peso: {Peso}</h2> : null}
-            <h2>Tipo: {Tipo ? Tipo.join(', ') : null}</h2>
+export default function CardDetail({ID, Nombre, Imagen}) {
+    return(           
+        <div className={styles.detailOneDiv}>
+            <section className={styles.detailOneSection}>
+                <h2>{Nombre}</h2>
+                <h2>Id: {ID}</h2>
+            </section>
+            <img className={styles.detailOneImg} src={Imagen} alt={Nombre} />
         </div>
     )
 }

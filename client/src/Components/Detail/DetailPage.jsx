@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {getPokemonDetail, getPokemonByName, clearDetail} from '../../Redux/actions';
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import CardDetail from "../CardDetail/CardDetail";
+import CardDetail2 from "../CardDetail/CardDetail2";
 import pokedex from './pokedex.png';
 import styles from './DetailPage.module.css'
 
@@ -33,19 +34,23 @@ export default function DetailPage() {
 
         return () => {
             dispatch(clearDetail())
-            console.log('Componente Desmontado')      
+            console.log('Componente Desmontado')         
         }
     },[nombreQuery, location.search, detailId, dispatch])                                 //ToDo: Solucionar el Parpadeo de paginados
                                                             
     return (                                                //Todo: Ver que al volver del detalle se renderice la ultima pagina visitada
         <div className={styles.contenedor}>                                                
             <img className={styles.pokedex} src={pokedex} alt="pokedex" />
-            <section className={styles.centrado}>
+            <section className={styles.visorIzq}>
                 {console.log(Nombre)}
                 <CardDetail
                     Id = {ID}
                     Nombre = {Nombre}
                     Imagen = {Imagen}
+                />
+            </section>
+            <section className={styles.visorDer}>
+                <CardDetail2
                     Vida = {Vida}
                     Ataque = {Ataque}
                     Defensa = {Defensa}
