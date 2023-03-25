@@ -57,10 +57,10 @@ export default function DetailPage() {
                     Velocidad = {Velocidad}
                     Altura = {Altura}
                     Peso = {Peso}
-                    Tipo = {Tipo}
+                    Tipo = {Tipo}             
                 />
-                <button onClick={back}>Volver</button>
             </section>
+            <button className={styles.button} onClick={back}>Volver</button>
         </div>
     )
 }

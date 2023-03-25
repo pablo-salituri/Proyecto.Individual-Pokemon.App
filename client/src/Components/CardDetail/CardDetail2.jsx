@@ -17,7 +17,7 @@ export default function CardDetail2({Vida, Ataque, Defensa, Velocidad, Altura, P
                     {Peso ? <h2 className={styles.detailTwoH2}>Peso: {Peso}</h2> : null}
                 </section>
             </div>
-            <h2>Tipo: {Tipo ? Tipo.join(', ') : null}</h2>
+            <h2 className={styles.detailTwoH2}>Tipos: {Tipo ? Tipo.join(', ') : null}</h2>
         </div>
     )
 }

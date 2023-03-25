@@ -1,5 +1,6 @@
 .detailOneDiv {
     width: 100%;
+    font-size: 100%;
 }
 
 
@@ -13,10 +14,10 @@
 .detailTwoDiv {
     width: 100%;
     height: 100%;
-    font-size: 0.65em;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 72%;
 }
 
 .detailTwoDivDatos {
