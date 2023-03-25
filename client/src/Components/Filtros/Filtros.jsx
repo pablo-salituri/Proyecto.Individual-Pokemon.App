@@ -9,19 +9,22 @@ import squirtle from './squirtle.png';
 import pikachu from './pikachu.png'
 
 
-export default function Filtros(){
+export default function Filtros({goToPage1}){
     const dispatch = useDispatch();
 
     const [orden, setOrden] = useState('Ascendente');       // Guardo los dos criterios en estados locales, para que al ejecutar
     const [ordenPor, SetOrdenPor] = useState('Id')          // uno, utilice el otro para saber cuál fue el ultimo onChage
-
+    
+    const [ifcambios, setIfcambios] = useState(false)       // Cada vez que se aplique un filtro/odenamiento, se vuelve a la página 1
 
     const handleFilter = (event) => {
-        dispatch(filter(event.target.value))
+        dispatch(filter(event.target.value));
+        setIfcambios(true)
     }
     
     const handleOrigin = (event) => {
-        dispatch(filterByOrigin(event.target.value))
+        dispatch(filterByOrigin(event.target.value));
+        setIfcambios(true)
     }
     
     function handleOrder(event) {
@@ -29,6 +32,7 @@ export default function Filtros(){
         /* orden === 'Ascendente'                   // Tuve que pasar esta poción de código a useEffect, porque evaluaba
         ?* dispatch(orderByAsc(ordenPor))           // el ternario antes de actualizar el estado
         : dispatch(orderByDesc(ordenPor)) */
+        setIfcambios(true)
     }
     
     function handleOrderBy(event) {
@@ -36,13 +40,23 @@ export default function Filtros(){
         /* orden === 'Ascendente'                       
         ?* dispatch(orderByAsc(event.target.value))
         : dispatch(orderByDesc(event.target.value)) */
+        setIfcambios(true)
     }
 
     useEffect(() => {
         orden === 'Ascendente'                      // Cuando se detecten cambios en alguno de los estados, vuelve a 
         ? dispatch(orderByAsc(ordenPor))            // ejecutar los dispatch con la últimza actualización de ambos estados
         : dispatch(orderByDesc(ordenPor)) 
-    },[orden, ordenPor, dispatch])
+    },[orden, ordenPor, dispatch])  
+    
+
+    useEffect(() => {                               // Cada vez que se aplique un filtro/odenamiento, se vuelve a la página 1
+        if (ifcambios) {
+            console.log('cambio');
+            setIfcambios(false);
+            goToPage1()
+        }
+    },[ifcambios, goToPage1])
 
     return(                                         
         <div className = {styles.div}>
