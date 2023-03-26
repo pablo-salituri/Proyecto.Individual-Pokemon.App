@@ -13,7 +13,7 @@ const reducer = (state = initialState, {type, payload}) => {
     switch(type) {
         case GET_ALL_POKEMONS:
             return {
-                ...state,
+                ...state,                       
                 allPokemons: payload,
                 filtro: payload,
                 origen: payload

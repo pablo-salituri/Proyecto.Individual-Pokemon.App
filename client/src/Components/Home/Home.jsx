@@ -8,9 +8,9 @@ import Filtros from '../Filtros/Filtros';
 import HomeCards from '../HomeCards/HomeCards';
 import loadingGif from './loadingGif.gif';
 import cargando from './cargando.gif'
-import styles from './Home.module.css'
+import styles from './Home.module.css'              //! SI NO ANDA ES POR LOS CAMBIOS EN EL REDUCER
 
-export default function Home() {
+export default function Home() {                
     const dispatch = useDispatch();
     const pokemonsPerPage = 12;
 
@@ -25,6 +25,7 @@ export default function Home() {
     const lastPokemonInPage = firstPokemonInPage + pokemonsPerPage;
     const pokemonsInPage = pokemonsToRender.slice(firstPokemonInPage,lastPokemonInPage)
 
+    
     const goToPage = (num) => {
         setCurrentPage(num)
     }                            
@@ -38,7 +39,7 @@ export default function Home() {
         document.body.style.backgroundSize = "cover";
         dispatch(getAllPokemons());
         dispatch(getTypes());
-    },[dispatch]);
+    },[]);
 
     return(
         <div className={styles.divGlobal}>

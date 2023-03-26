@@ -52,7 +52,7 @@ export default function Filtros({goToPage1}){
 
     useEffect(() => {                               // Cada vez que se aplique un filtro/odenamiento, se vuelve a la página 1
         if (ifcambios) {
-            console.log('cambio');
+            //console.log('cambio');
             setIfcambios(false);
             goToPage1()
         }
