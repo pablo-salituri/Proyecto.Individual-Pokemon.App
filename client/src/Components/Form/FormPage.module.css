@@ -1,3 +1,21 @@
+.divGlobal {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.divForm {
+    width: 80%;
+}
+
+.divPreview {
+    /* background-color: cyan; */
+    display: flex;
+    justify-content: left;
+    width: 20%;
+    padding-top: 5%;
+}
+
 .Form {
     display: flex;
     flex-direction: column;

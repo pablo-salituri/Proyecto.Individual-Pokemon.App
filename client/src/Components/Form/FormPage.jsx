@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getTypes,createPokemon } from "../../Redux/actions";
+import Preview from "../Preview/Preview";
 import styles from './FormPage.module.css';
 import validate from './Validate.js'
 
@@ -111,144 +112,149 @@ export default function FormPage() {
                 clearFields()
         } 
     }
-
+    
     return(
-        <div>
-            <h6>* : Campos Obligatorios</h6>
-            <form  className = {styles.Form} onSubmit={handleSubmit}>
-                <div className={styles.divInputs}>
-                    <section className={styles.sectionInputs}>
+        <div className={styles.divGlobal}>
+            <div className={styles.divForm}>
+                <h6>* : Campos Obligatorios</h6>
+                <form  className = {styles.Form} onSubmit={handleSubmit}>
+                    <div className={styles.divInputs}>
+                        <section className={styles.sectionInputs}>
 
-                        <section className={styles.sectionInput}>
-                            <label htmlFor="Nombre">Nombre*</label>
-                            <input className={(errors.Nombre && styles.warning) || styles.inputs} placeholder='Nombre' 
-                                name='Nombre' 
-                                type="text" 
-                                value={input.Nombre} 
-                                autoComplete='off'
-                                onChange={handleInputChange}    
-                            />
-                            <p className={styles.danger}>{errors.Nombre}</p>
-                        </section>
-                        
-                        <section className={styles.sectionInput}>
-                            <label htmlFor="Imagen">Imagen*</label>
-                            <input className={(errors.Imagen && styles.warning) || styles.inputs} placeholder='Imagen' 
-                                name = 'Imagen' 
-                                type="text"                     
-                                value={input.Imagen} 
-                                autoComplete='off'
-                                onChange={handleInputChange}   
-                            />
-                            <p className={styles.danger}>{errors.Imagen}</p>
-                        </section>
+                            <section className={styles.sectionInput}>
+                                <label htmlFor="Nombre">Nombre*</label>
+                                <input className={(errors.Nombre && styles.warning) || styles.inputs} placeholder='Nombre' 
+                                    name='Nombre' 
+                                    type="text" 
+                                    value={input.Nombre} 
+                                    autoComplete='off'
+                                    onChange={handleInputChange}    
+                                />
+                                <p className={styles.danger}>{errors.Nombre}</p>
+                            </section>
+                            
+                            <section className={styles.sectionInput}>
+                                <label htmlFor="Imagen">Imagen*</label>
+                                <input className={(errors.Imagen && styles.warning) || styles.inputs} placeholder='Imagen' 
+                                    name = 'Imagen' 
+                                    type="text"                     
+                                    value={input.Imagen} 
+                                    autoComplete='off'
+                                    onChange={handleInputChange}   
+                                />
+                                <p className={styles.danger}>{errors.Imagen}</p>
+                            </section>
 
-                        <section className={styles.sectionInput}>
-                            <label htmlFor="Vida">Vida*</label>
-                            <input className={(errors.Vida && styles.warning) || styles.inputs} placeholder='Vida' 
-                                name = 'Vida' 
-                                type="Number" 
-                                value={input.Vida} 
-                                autoComplete='off'
-                                onChange={handleInputChange}
-                                //className = {(errors.password && styles.warning) || styles.input}    
-                            />
-                            <p className={styles.danger}>{errors.Vida}</p>
-                        </section>
+                            <section className={styles.sectionInput}>
+                                <label htmlFor="Vida">Vida*</label>
+                                <input className={(errors.Vida && styles.warning) || styles.inputs} placeholder='Vida' 
+                                    name = 'Vida' 
+                                    type="Number" 
+                                    value={input.Vida} 
+                                    autoComplete='off'
+                                    onChange={handleInputChange}
+                                    //className = {(errors.password && styles.warning) || styles.input}    
+                                />
+                                <p className={styles.danger}>{errors.Vida}</p>
+                            </section>
 
-                        <section className={styles.sectionInput}>
-                            <label htmlFor="Ataque">Ataque*</label>
-                            <input className={(errors.Ataque && styles.warning) || styles.inputs} placeholder='Ataque' 
-                                name = 'Ataque' 
-                                type="Number" 
-                                value={input.Ataque} 
-                                autoComplete='off'
-                                onChange={handleInputChange}
-                                //className = {(errors.password && styles.warning) || styles.input}    
-                            />
-                            <p className={styles.danger}>{errors.Ataque}</p>
-                        </section>
-                 
-                    </section>
+                            <section className={styles.sectionInput}>
+                                <label htmlFor="Ataque">Ataque*</label>
+                                <input className={(errors.Ataque && styles.warning) || styles.inputs} placeholder='Ataque' 
+                                    name = 'Ataque' 
+                                    type="Number" 
+                                    value={input.Ataque} 
+                                    autoComplete='off'
+                                    onChange={handleInputChange}
+                                    //className = {(errors.password && styles.warning) || styles.input}    
+                                />
+                                <p className={styles.danger}>{errors.Ataque}</p>
+                            </section>
                     
-                    <section className={styles.sectionInputs}>
-                        <section className={styles.sectionInput}>
-                            <label htmlFor="Defensa">Defensa*</label>
-                            <input className={(errors.Defensa && styles.warning) || styles.inputs} placeholder='Defensa' 
-                                name = 'Defensa' 
-                                type="Number" 
-                                value={input.Defensa} 
-                                autoComplete='off'
-                                onChange={handleInputChange}
-                                //className = {(errors.password && styles.warning) || styles.input}    
-                            />
-                            <p className={styles.danger}>{errors.Defensa}</p>
                         </section>
                         
-                        <section className={styles.sectionInput}>
-                            <label htmlFor="Velocidad">Velocidad</label>
-                            <input className={(errors.Velocidad && styles.warning) || styles.inputs} placeholder='Velocidad' 
-                                name = 'Velocidad' 
-                                type="Number" 
-                                value={input.Velocidad} 
-                                autoComplete='off'
-                                onChange={handleInputChange}
-                                //className = {(errors.password && styles.warning) || styles.input}    
-                            />
-                            <p className={styles.danger}>{errors.Velocidad}</p>
-                        </section>
+                        <section className={styles.sectionInputs}>
+                            <section className={styles.sectionInput}>
+                                <label htmlFor="Defensa">Defensa*</label>
+                                <input className={(errors.Defensa && styles.warning) || styles.inputs} placeholder='Defensa' 
+                                    name = 'Defensa' 
+                                    type="Number" 
+                                    value={input.Defensa} 
+                                    autoComplete='off'
+                                    onChange={handleInputChange}
+                                    //className = {(errors.password && styles.warning) || styles.input}    
+                                />
+                                <p className={styles.danger}>{errors.Defensa}</p>
+                            </section>
+                            
+                            <section className={styles.sectionInput}>
+                                <label htmlFor="Velocidad">Velocidad</label>
+                                <input className={(errors.Velocidad && styles.warning) || styles.inputs} placeholder='Velocidad' 
+                                    name = 'Velocidad' 
+                                    type="Number" 
+                                    value={input.Velocidad} 
+                                    autoComplete='off'
+                                    onChange={handleInputChange}
+                                    //className = {(errors.password && styles.warning) || styles.input}    
+                                />
+                                <p className={styles.danger}>{errors.Velocidad}</p>
+                            </section>
 
-                        <section className={styles.sectionInput}>
-                            <label htmlFor="Altura">Altura</label>
-                            <input className={(errors.Altura && styles.warning) || styles.inputs} placeholder='Altura' 
-                                name = 'Altura' 
-                                type="Number" 
-                                value={input.Altura} 
-                                autoComplete='off'
-                                onChange={handleInputChange}
-                                //className = {(errors.password && styles.warning) || styles.input}    
-                            />
-                            <p className={styles.danger}>{errors.Altura}</p>
+                            <section className={styles.sectionInput}>
+                                <label htmlFor="Altura">Altura</label>
+                                <input className={(errors.Altura && styles.warning) || styles.inputs} placeholder='Altura' 
+                                    name = 'Altura' 
+                                    type="Number" 
+                                    value={input.Altura} 
+                                    autoComplete='off'
+                                    onChange={handleInputChange}
+                                    //className = {(errors.password && styles.warning) || styles.input}    
+                                />
+                                <p className={styles.danger}>{errors.Altura}</p>
+                            </section>
+                            
+                            <section className={styles.sectionInput}>
+                                <label htmlFor="Peso">Peso</label>
+                                <input className={(errors.Peso && styles.warning) || styles.inputs} placeholder='Peso' 
+                                    name = 'Peso' 
+                                    type="Number" 
+                                    value={input.Peso} 
+                                    autoComplete='off'
+                                    onChange={handleInputChange}
+                                    //className = {(errors.password && styles.warning) || styles.input}    
+                                />
+                                <p className={styles.danger}>{errors.Peso}</p>
+                            </section>
                         </section>
-                        
-                        <section className={styles.sectionInput}>
-                            <label htmlFor="Peso">Peso</label>
-                            <input className={(errors.Peso && styles.warning) || styles.inputs} placeholder='Peso' 
-                                name = 'Peso' 
-                                type="Number" 
-                                value={input.Peso} 
-                                autoComplete='off'
-                                onChange={handleInputChange}
-                                //className = {(errors.password && styles.warning) || styles.input}    
-                            />
-                            <p className={styles.danger}>{errors.Peso}</p>
-                        </section>
-                    </section>
-                </div>
-                
-                <div className={styles.divTypes}>
-                    <h3>Escoge al menos un tipo:</h3>
-                    <section className={styles.sectionTypes}>               {/* //* Primera mitad */}
-                        {
-                        types.slice(0, types.length/2).map(tipo => (
-                            <div key={tipo}>
-                                <input type="checkbox" onClick={handleCheckBox} name={tipo}/> {tipo[0].toUpperCase()+tipo.slice(1)}
-                            </div>
-                        ))
-                        }
-                    </section>                
-                    <section className={styles.sectionTypes}>               {/* //*Segunda mitad */}
-                        {
-                        types.slice(types.length/2).map(tipo => (
-                            <div key={tipo}>
-                                <input type="checkbox" onClick={handleCheckBox} name={tipo}/> {tipo[0].toUpperCase()+tipo.slice(1)}
-                            </div>
-                        ))
-                        }
-                    </section>              
-                </div>
-                <button className={styles.button} type='submit'>CREAR POKEMON</button>
-            </form>
+                    </div>
+                    
+                    <div className={styles.divTypes}>
+                        <h3>Escoge al menos un tipo:</h3>
+                        <section className={styles.sectionTypes}>               {/* //* Primera mitad */}
+                            {
+                            types.slice(0, types.length/2).map(tipo => (
+                                <div key={tipo}>
+                                    <input type="checkbox" onClick={handleCheckBox} name={tipo}/> {tipo[0].toUpperCase()+tipo.slice(1)}
+                                </div>
+                            ))
+                            }
+                        </section>                
+                        <section className={styles.sectionTypes}>               {/* //*Segunda mitad */}
+                            {
+                            types.slice(types.length/2).map(tipo => (
+                                <div key={tipo}>
+                                    <input type="checkbox" onClick={handleCheckBox} name={tipo}/> {tipo[0].toUpperCase()+tipo.slice(1)}
+                                </div>
+                            ))
+                            }
+                        </section>              
+                    </div>
+                    <button className={styles.button} type='submit'>CREAR POKEMON</button>
+                </form>
+            </div>
+            <div className={styles.divPreview}>
+                <Preview Nombre={input.Nombre} Imagen={input.Imagen} Tipo={input.Tipo}/>
+            </div>
         </div>
     )
 }
