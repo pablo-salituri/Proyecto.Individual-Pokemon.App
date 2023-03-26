@@ -17,6 +17,10 @@
     border-radius: 1.7em;
 }
 
+.porTipo:hover, .porOrigen:hover, .porCriterio:hover, .porAsc:hover {
+    cursor: pointer;
+}
+
 .porOrigen {
     background-color: rgba(36, 106, 163, 0.8);
 }

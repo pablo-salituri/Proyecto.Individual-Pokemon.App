@@ -47,7 +47,8 @@ export const getPokemonByName = (Nombre) => {
                 payload: respuestaDelBack.data
             })
         } catch (error) {
-            return dispatch({type: 'ERROR', payload: error})
+            console.log(error.response.data.error);
+            return dispatch({type: 'ERROR', payload: error.response.data.error})  
         }
     }
 }

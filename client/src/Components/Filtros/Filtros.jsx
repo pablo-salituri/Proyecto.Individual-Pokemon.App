@@ -6,10 +6,10 @@ import styles from './Filtros.module.css';
 import charmander from './charmander.png';
 import bulbasaur from './bulbasaur.png';
 import squirtle from './squirtle.png';
-import pikachu from './pikachu.png'
+import pikachu from './pikachu.png'            
 
 
-export default function Filtros({goToPage1}){
+export default function Filtros({goToPage1, setFirstRenderFalse}){
     const dispatch = useDispatch();
 
     const [orden, setOrden] = useState('Ascendente');       // Guardo los dos criterios en estados locales, para que al ejecutar
@@ -54,9 +54,10 @@ export default function Filtros({goToPage1}){
         if (ifcambios) {
             //console.log('cambio');
             setIfcambios(false);
+            setFirstRenderFalse();                  // Evalúo cuando no hay nada para mostrar. Si el el primer render, muestro Gif. Sino, (se aplicaron filtros) renderizo que no hay nada para mostrar
             goToPage1()
         }
-    },[ifcambios, goToPage1])
+    },[ifcambios, goToPage1, setFirstRenderFalse])
 
     return(                                         
         <div className = {styles.div}>
