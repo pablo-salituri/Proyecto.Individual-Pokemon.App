@@ -46,7 +46,7 @@ export default function DetailPage() {
             {
                 erroresReducer.length ?
                 (
-                    <div>
+                <div>
                     <section className={styles.visorIzq}>
                         {console.log(Nombre)}
                         <CardDetail
@@ -63,10 +63,11 @@ export default function DetailPage() {
                             Velocidad = '?'
                             Altura = '?'
                             Peso = '?'
-                            Tipo = {['?']}
+                            Tipo = {['?']}            
                         />
                     </section>
                     <button className={styles.button} onClick={back}>Volver</button>
+                    <span className={styles.span}>POKEMON DESCONOCIDO</span>
                 </div> 
             ) : (
                 <div>

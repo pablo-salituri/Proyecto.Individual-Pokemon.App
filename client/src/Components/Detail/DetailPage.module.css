@@ -66,3 +66,36 @@
 .button:hover {
     cursor: pointer;
 }
+
+
+.span {
+    margin: 0;
+    position: absolute;
+    top: 83.5%;
+    left: 55.75%;
+    background-color: rgb(171, 232, 177);
+    color: black;
+    border: 1px solid black;
+    height: 7.3%;
+    width: 8.15%;
+    font-size: 85%;
+    line-height: 150%;                          
+    font-weight: bold;
+    border-radius: 0.5em;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: animate 0.5s alternate infinite
+}
+
+
+@keyframes animate {
+    from {
+        box-shadow: inset 0 0 7em 1em rgb(253, 143, 143);
+    }
+    to {
+        box-shadow: inset 0 0 7em 1em transparent;
+                    /* 0 0 10px blue;  */
+    }
+}
