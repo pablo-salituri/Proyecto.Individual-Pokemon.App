@@ -11,17 +11,20 @@
 }
 
 
-.detailTwoDiv {
-    width: 100%;
-    height: 100%;
+.detailTwoDiv {                 
+    width: 92%;
+    height: 78.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 72%;
+    padding: 4%;
+    font-size: 1.3vh;
 }
 
 .detailTwoDivDatos {
     display: flex;
+    text-align-last: justify;
+    column-gap: 3vw;
 }
 
 

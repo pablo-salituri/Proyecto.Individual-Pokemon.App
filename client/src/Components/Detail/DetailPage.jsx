@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {getPokemonDetail, getPokemonByName, clearDetail} from '../../Redux/actions';
+import {getPokemonDetail, getPokemonByName, clearDetail, clearErrors} from '../../Redux/actions';
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import CardDetail from "../CardDetail/CardDetail";
 import CardDetail2 from "../CardDetail/CardDetail2";
@@ -24,6 +24,7 @@ export default function DetailPage() {
     const erroresReducer = useSelector(state => state.erroresBack);
 
     function back() {
+        dispatch(clearErrors)
         navigate(-1)
     }
     
@@ -39,19 +40,19 @@ export default function DetailPage() {
             console.log('Componente Desmontado')         
         }
     },[nombreQuery, location.search, detailId, dispatch])             
+    
                                                             
-    return (                                                //Todo: Ver que al volver del detalle se renderice la ultima pagina visitada
-        <div className={styles.contenedor}>                                                
+    return (                                               
+        <div className={styles.contenedor}>                                              
             <img className={styles.pokedex} src={pokedex} alt="pokedex" />          
             {
                 erroresReducer.length ?
                 (
                 <div>
                     <section className={styles.visorIzq}>
-                        {console.log(Nombre)}
                         <CardDetail
-                            Id = '?'
-                            Nombre = '?'
+                            ID = '?'
+                            Nombre = 'Nombre: ?'
                             Imagen = {mewtwo}
                         />
                     </section>
@@ -63,35 +64,38 @@ export default function DetailPage() {
                             Velocidad = '?'
                             Altura = '?'
                             Peso = '?'
-                            Tipo = {['?']}            
+                            Tipo = {['?']}
                         />
                     </section>
                     <button className={styles.button} onClick={back}>Volver</button>
                     <span className={styles.span}>POKEMON DESCONOCIDO</span>
                 </div> 
-            ) : (
-                <div>
-                    <section className={styles.visorIzq}>
-                        {console.log(Nombre)}
-                        <CardDetail
-                            Id = {ID}
-                            Nombre = {Nombre}
-                            Imagen = {Imagen}
-                        />
-                    </section>
-                    <section className={styles.visorDer}>
-                        <CardDetail2
-                            Vida = {Vida}
-                            Ataque = {Ataque}
-                            Defensa = {Defensa}
-                            Velocidad = {Velocidad}
-                            Altura = {Altura}
-                            Peso = {Peso}
-                            Tipo = {Tipo}             
-                        />
-                    </section>
-                    <button className={styles.button} onClick={back}>Volver</button>
-                </div>  
+            ) : (                      
+                ID ?
+                    <div>
+                        <section className={styles.visorIzq}>
+                            <CardDetail
+                                ID = {ID}
+                                Nombre = {Nombre}
+                                Imagen = {Imagen}
+                            />
+                        </section>
+                        <section className={styles.visorDer}>
+                            <CardDetail2
+                                Vida = {Vida}
+                                Ataque = {Ataque}
+                                Defensa = {Defensa}
+                                Velocidad = {Velocidad}
+                                Altura = {Altura}
+                                Peso = {Peso}
+                                Tipo = {Tipo}             
+                            />
+                        </section>
+                        <button className={styles.button} onClick={back}>Volver</button>
+                    </div>
+                : (
+                    <p className={styles.loading}>LOADING...</p>        
+                )
             )
             }
         </div>

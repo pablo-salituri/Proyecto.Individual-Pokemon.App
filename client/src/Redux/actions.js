@@ -1,4 +1,4 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES/* , CREATE_POKEMON */} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES, CLEAR_ERRORS} from './types';
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/pokemons/';
@@ -150,4 +150,12 @@ export const createPokemon = (pokemon) => {
             //console.log('action -> ',error.response.data.error);
         }
     }
+}
+
+
+export const clearErrors = (dispatch) => {
+    return dispatch({
+        type: CLEAR_ERRORS,
+        payload: {}
+    })
 }
