@@ -1,20 +1,52 @@
 .divGlobal {
+    position: relative;
     display: flex;
-    justify-content: space-between;
-
+    background-color: rgba(194, 191, 191, 0.7);
+    height: 80%;
+    margin: 2%;                     
 }
 
+
+.divTypes {
+    /* background-color: cyan; */
+    position: absolute;
+    width: 15%;
+    height: 97%;
+    top: 3%;
+    display: flex;                 
+    flex-direction: column;
+    align-items: center;
+    line-height: 180%;
+    font-size: 1.1em;
+}
+
+
+.sectionTypes {
+    text-align: left;
+}
+
+
 .divForm {
-    width: 80%;
+    /* background-color: brown; */
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    left: 15%;
+    width: 65%;
+    height: 95%;
 }
 
 .divPreview {
     /* background-color: cyan; */
+    position: absolute;
+    top: 20%;
+    right: 0;
+    width: 20%;
+    height: 80%;
     display: flex;
     justify-content: left;
-    width: 20%;
-    padding-top: 5%;
-}
+    margin: 0;
+} 
 
 .Form {
     display: flex;
@@ -29,37 +61,36 @@
 }
 
 .sectionInputs {
+    margin-top: 19%;
     display: flex;
     flex-direction: column;
-    row-gap: 2em;
+    row-gap: 3.5em;
 }
 
 .sectionInput {
     display: flex;
     flex-direction: column;
+    width: 22em;
+    height: 7.5em;
     row-gap: 0.5em;
     align-items: center;
 }
 
-.inputs {
-    height: 2em;
+.inputs {                           /* //!BREAKPOINT */
+    background-color: rgb(240, 240, 240);
+    height: 2.5em;
     width: 20em;
     border-radius: 2em;
+    padding-left: 1.5em;
+    font-size: 1em;
+    font-weight: bold;
 }
 
-.divTypes {
-    display: flex;                 
-    flex-direction: column;
-    margin-top: 4em;
-    row-gap: 2em;
-    scale: 140%;
-    align-items: center;
+.inputs::placeholder {
+    font-size: 0.9em;
+    font-weight: normal;
 }
 
-.sectionTypes {
-    display: flex;
-    column-gap: 2em;
-}
 
 .button {
     margin-top: 5em;
@@ -73,9 +104,13 @@
 
 .warning {
     border: solid red 2px;
-    height: 2em;
+    background-color: rgb(240, 240, 240);
+    height: 2.5em;
     width: 20em;
     border-radius: 2em;
+    padding-left: 1.5em;
+    font-size: 1em;
+    font-weight: bold;
 }
   
 

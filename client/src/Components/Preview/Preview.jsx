@@ -7,7 +7,7 @@ export default function Preview({Nombre, Imagen, Tipo}) {
         <div className={styles.borders}>
             <div className={styles.cards}>
                 <h2 className={styles.cardName}>{Nombre}</h2>
-                <img className={styles.cardImg} src={Imagen} alt={Nombre} />
+                <img className={styles.cardImg} src={Imagen} alt='' />
                 <div className={styles.cardTipos}>
                     <section>
                         <h3 className={styles.cardType}>Tipos</h3>

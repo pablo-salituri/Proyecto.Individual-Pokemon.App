@@ -111,12 +111,24 @@ export default function FormPage() {
             if (message === `FELICITACIONES!\nPokemon creado con éxito`)
                 clearFields()
         } 
-    }
-    
-    return(
+    }                  
+
+    return(                                                     
         <div className={styles.divGlobal}>
+            <div className={styles.divTypes}>
+                <h3>Escoge al menos un tipo:</h3>
+                <section className={styles.sectionTypes}>
+                    {
+                    types.map(tipo => (
+                        <div key={tipo}>
+                            <input type="checkbox" onClick={handleCheckBox} name={tipo}/> {tipo[0].toUpperCase()+tipo.slice(1)}
+                        </div>
+                    ))
+                    }
+                </section>                             
+            </div>
+            
             <div className={styles.divForm}>
-                <h6>* : Campos Obligatorios</h6>
                 <form  className = {styles.Form} onSubmit={handleSubmit}>
                     <div className={styles.divInputs}>
                         <section className={styles.sectionInputs}>
@@ -153,7 +165,6 @@ export default function FormPage() {
                                     value={input.Vida} 
                                     autoComplete='off'
                                     onChange={handleInputChange}
-                                    //className = {(errors.password && styles.warning) || styles.input}    
                                 />
                                 <p className={styles.danger}>{errors.Vida}</p>
                             </section>
@@ -166,7 +177,6 @@ export default function FormPage() {
                                     value={input.Ataque} 
                                     autoComplete='off'
                                     onChange={handleInputChange}
-                                    //className = {(errors.password && styles.warning) || styles.input}    
                                 />
                                 <p className={styles.danger}>{errors.Ataque}</p>
                             </section>
@@ -182,7 +192,6 @@ export default function FormPage() {
                                     value={input.Defensa} 
                                     autoComplete='off'
                                     onChange={handleInputChange}
-                                    //className = {(errors.password && styles.warning) || styles.input}    
                                 />
                                 <p className={styles.danger}>{errors.Defensa}</p>
                             </section>
@@ -195,7 +204,6 @@ export default function FormPage() {
                                     value={input.Velocidad} 
                                     autoComplete='off'
                                     onChange={handleInputChange}
-                                    //className = {(errors.password && styles.warning) || styles.input}    
                                 />
                                 <p className={styles.danger}>{errors.Velocidad}</p>
                             </section>
@@ -208,7 +216,6 @@ export default function FormPage() {
                                     value={input.Altura} 
                                     autoComplete='off'
                                     onChange={handleInputChange}
-                                    //className = {(errors.password && styles.warning) || styles.input}    
                                 />
                                 <p className={styles.danger}>{errors.Altura}</p>
                             </section>
@@ -221,35 +228,13 @@ export default function FormPage() {
                                     value={input.Peso} 
                                     autoComplete='off'
                                     onChange={handleInputChange}
-                                    //className = {(errors.password && styles.warning) || styles.input}    
                                 />
                                 <p className={styles.danger}>{errors.Peso}</p>
                             </section>
                         </section>
                     </div>
-                    
-                    <div className={styles.divTypes}>
-                        <h3>Escoge al menos un tipo:</h3>
-                        <section className={styles.sectionTypes}>               {/* //* Primera mitad */}
-                            {
-                            types.slice(0, types.length/2).map(tipo => (
-                                <div key={tipo}>
-                                    <input type="checkbox" onClick={handleCheckBox} name={tipo}/> {tipo[0].toUpperCase()+tipo.slice(1)}
-                                </div>
-                            ))
-                            }
-                        </section>                
-                        <section className={styles.sectionTypes}>               {/* //*Segunda mitad */}
-                            {
-                            types.slice(types.length/2).map(tipo => (
-                                <div key={tipo}>
-                                    <input type="checkbox" onClick={handleCheckBox} name={tipo}/> {tipo[0].toUpperCase()+tipo.slice(1)}
-                                </div>
-                            ))
-                            }
-                        </section>              
-                    </div>
                     <button className={styles.button} type='submit'>CREAR POKEMON</button>
+                    <h6>* : Campos Obligatorios</h6>
                 </form>
             </div>
             <div className={styles.divPreview}>

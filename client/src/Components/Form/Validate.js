@@ -6,26 +6,26 @@ export default function validate(currentInput) {
     var errors = {}      
 
     switch(true) {
-        case (Nombre.length < 3 || Nombre.length > 20):
-            errors.Nombre = 'El nombre debe contener entre 3 y 20 letras';
+        case (Nombre.length && (Nombre.length < 3 || Nombre.length > 10)):
+            errors.Nombre = 'El nombre debe contener entre 3 y 10 letras';
             break;
-        case (!regexNombre.test(Nombre)):
+        case (Nombre.length && !regexNombre.test(Nombre)):
             errors.Nombre = 'El nombre solo debe contener letras';
             break;
         default:
-            break
+            break                       
     }    
 
-    if (!regexUrl.test(Imagen))
+    if (Imagen.length && (!regexUrl.test(Imagen)))
         errors.Imagen = 'La URL debe contener un archivo .jpg o .png';
         
-    if (Vida < 1 || Vida > 120)
+    if (Vida.length && (Vida < 1 || Vida > 120))
         errors.Vida = 'Debe estar comprendido entre 1 y 120';
         
-    if (Ataque < 10 || Ataque > 100)
+    if (Ataque.length && (Ataque < 10 || Ataque > 100))
         errors.Ataque = 'Debe estar comprendido entre 1 y 100';
         
-    if (Defensa < 10 || Defensa > 100)
+    if (Defensa.length && (Defensa < 10 || Defensa > 100))
         errors.Defensa = 'Debe estar comprendido entre 1 y 100';
         
     if (Velocidad > 100)
