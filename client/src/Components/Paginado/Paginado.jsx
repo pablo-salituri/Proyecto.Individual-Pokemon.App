@@ -12,7 +12,7 @@ export default function Paginado({cantDePaginas, goToPage, currentPage}) {
             <button className={styles.botones} disabled={currentPage===1} onClick={() => goToPage(currentPage-1)}>{'<'}</button>
             {    
                 arrayDePaginas.map(num => 
-                    <button className={styles.botones} disabled={currentPage===num} key={num} onClick={() => goToPage(num)}>{num}</button>
+                    <button className={currentPage===num ? styles.botonIsActive : styles.botones} disabled={currentPage===num} key={num} onClick={() => goToPage(num)}>{num}</button>
                 )
             }
             <button className={styles.botones} disabled={currentPage===cantDePaginas} onClick={() => goToPage(currentPage+1)}>{'>'}</button>   
