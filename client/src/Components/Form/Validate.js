@@ -17,24 +17,24 @@ export default function validate(currentInput) {
     }    
 
     if (Imagen.length && (!regexUrl.test(Imagen)))
-        errors.Imagen = 'La URL debe contener un archivo .jpg o .png';
+        errors.Imagen = 'La URL debe contener una imagen .jpg ó .png';
         
     if (Vida.length && (Vida < 1 || Vida > 120))
         errors.Vida = 'Debe estar comprendido entre 1 y 120';
         
     if (Ataque.length && (Ataque < 10 || Ataque > 100))
-        errors.Ataque = 'Debe estar comprendido entre 1 y 100';
+        errors.Ataque = 'Debe estar comprendido entre 10 y 100';
         
     if (Defensa.length && (Defensa < 10 || Defensa > 100))
-        errors.Defensa = 'Debe estar comprendido entre 1 y 100';
+        errors.Defensa = 'Debe estar comprendido entre 10 y 100';
         
-    if (Velocidad > 100)
+    if (Velocidad < 0 || Velocidad > 100)
         errors.Velocidad = 'No puede ser mayor a 100';
         
-    if (Altura > 200)
-        errors.Altura = 'No puede ser mayor a 200';
+    if (Altura < 0 || Altura > 300)
+        errors.Altura = 'No puede ser mayor a 300';
         
-    if (Peso > 5000)
+    if (Peso < 0 || Peso > 5000)
         errors.Peso = 'No puede ser mayor a 5000';
         
     /* case (!Tipo):

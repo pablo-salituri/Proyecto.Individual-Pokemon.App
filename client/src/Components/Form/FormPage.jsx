@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { getTypes,createPokemon } from "../../Redux/actions";
 import Preview from "../Preview/Preview";
 import styles from './FormPage.module.css';
-import validate from './Validate.js'
+import validate from './Validate.js';          
+import fondoNegro2 from './fondoNegro2.jpg'
 
 
 export default function FormPage() {
@@ -113,8 +114,9 @@ export default function FormPage() {
         } 
     }                  
 
-    return(                                                     
+    return(       
         <div className={styles.divGlobal}>
+            <img className={styles.fondoNegro} src={fondoNegro2} alt="fondoNegro2" />
             <div className={styles.divTypes}>
                 <h3>Escoge al menos un tipo:</h3>
                 <section className={styles.sectionTypes}>
@@ -135,7 +137,7 @@ export default function FormPage() {
 
                             <section className={styles.sectionInput}>
                                 <label htmlFor="Nombre">Nombre*</label>
-                                <input className={(errors.Nombre && styles.warning) || styles.inputs} placeholder='Nombre' 
+                                <input className={(errors.Nombre && styles.warning) || styles.inputs} placeholder='Ingrese un Nombre (3 a 10 letras)' 
                                     name='Nombre' 
                                     type="text" 
                                     value={input.Nombre} 
@@ -147,7 +149,7 @@ export default function FormPage() {
                             
                             <section className={styles.sectionInput}>
                                 <label htmlFor="Imagen">Imagen*</label>
-                                <input className={(errors.Imagen && styles.warning) || styles.inputs} placeholder='Imagen' 
+                                <input className={(errors.Imagen && styles.warning) || styles.inputs} placeholder='Ingrese una URL de imagen (.jpg ó .png)' 
                                     name = 'Imagen' 
                                     type="text"                     
                                     value={input.Imagen} 
@@ -159,7 +161,7 @@ export default function FormPage() {
 
                             <section className={styles.sectionInput}>
                                 <label htmlFor="Vida">Vida*</label>
-                                <input className={(errors.Vida && styles.warning) || styles.inputs} placeholder='Vida' 
+                                <input className={(errors.Vida && styles.warning) || styles.inputs} placeholder='Ingrese un número entre 1 y 120' 
                                     name = 'Vida' 
                                     type="Number" 
                                     value={input.Vida} 
@@ -171,7 +173,7 @@ export default function FormPage() {
 
                             <section className={styles.sectionInput}>
                                 <label htmlFor="Ataque">Ataque*</label>
-                                <input className={(errors.Ataque && styles.warning) || styles.inputs} placeholder='Ataque' 
+                                <input className={(errors.Ataque && styles.warning) || styles.inputs} placeholder='Ingrese un número entre 10 y 100' 
                                     name = 'Ataque' 
                                     type="Number" 
                                     value={input.Ataque} 
@@ -186,7 +188,7 @@ export default function FormPage() {
                         <section className={styles.sectionInputs}>
                             <section className={styles.sectionInput}>
                                 <label htmlFor="Defensa">Defensa*</label>
-                                <input className={(errors.Defensa && styles.warning) || styles.inputs} placeholder='Defensa' 
+                                <input className={(errors.Defensa && styles.warning) || styles.inputs} placeholder='Ingrese un número entre 10 y 100' 
                                     name = 'Defensa' 
                                     type="Number" 
                                     value={input.Defensa} 
@@ -198,7 +200,7 @@ export default function FormPage() {
                             
                             <section className={styles.sectionInput}>
                                 <label htmlFor="Velocidad">Velocidad</label>
-                                <input className={(errors.Velocidad && styles.warning) || styles.inputs} placeholder='Velocidad' 
+                                <input className={(errors.Velocidad && styles.warning) || styles.inputs} placeholder='Ingrese un número entre 0 y 100' 
                                     name = 'Velocidad' 
                                     type="Number" 
                                     value={input.Velocidad} 
@@ -210,7 +212,7 @@ export default function FormPage() {
 
                             <section className={styles.sectionInput}>
                                 <label htmlFor="Altura">Altura</label>
-                                <input className={(errors.Altura && styles.warning) || styles.inputs} placeholder='Altura' 
+                                <input className={(errors.Altura && styles.warning) || styles.inputs} placeholder='Ingrese un número entre 0 y 300' 
                                     name = 'Altura' 
                                     type="Number" 
                                     value={input.Altura} 
@@ -222,7 +224,7 @@ export default function FormPage() {
                             
                             <section className={styles.sectionInput}>
                                 <label htmlFor="Peso">Peso</label>
-                                <input className={(errors.Peso && styles.warning) || styles.inputs} placeholder='Peso' 
+                                <input className={(errors.Peso && styles.warning) || styles.inputs} placeholder='Ingrese un número entre 0 y 5000' 
                                     name = 'Peso' 
                                     type="Number" 
                                     value={input.Peso} 
@@ -231,10 +233,12 @@ export default function FormPage() {
                                 />
                                 <p className={styles.danger}>{errors.Peso}</p>
                             </section>
-                        </section>
+                        </section>          
                     </div>
-                    <button className={styles.button} type='submit'>CREAR POKEMON</button>
-                    <h6>* : Campos Obligatorios</h6>
+                    <section className={styles.footer}>
+                        <button className={styles.button} type='submit'>CREAR POKEMON</button>
+                        <h6 className={styles.h6}>* : Campos Obligatorios</h6>
+                    </section>
                 </form>
             </div>
             <div className={styles.divPreview}>

@@ -30,7 +30,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    scale: 150%;
+    scale: 130%;
     animation: animate 1.2s linear infinite alternate
 }
     
