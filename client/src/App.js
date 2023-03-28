@@ -5,6 +5,7 @@ import LandingPage from './Components/LandingPage/LandingPage';
 import DetailPage from './Components/Detail/DetailPage';
 import FormPage from './Components/Form/FormPage';
 import NavBar from './Components/NavBar/NavBar';
+import SobreMi from './Components/SobreMi/SobreMi.jsx'
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/Home" element={<Home />}> </Route>;
         <Route path='/DetailPage/:detailId' element={<DetailPage />}> </Route>;
         <Route path='/FormPage' element={<FormPage />}> </Route>
+        <Route path='/SobreMi' element={<SobreMi />}> </Route>
       </Routes>
     </div>
   );

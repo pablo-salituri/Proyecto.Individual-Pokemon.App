@@ -1,21 +1,43 @@
-.div {
-    height: 10vh;
-    display: flex;
-    justify-content: space-around;
+.container {                            
     background: linear-gradient(45deg, rgba(0, 0, 255, 0.6), rgba(0, 128, 0, 0.6), rgba(255, 255, 0, 0.6), rgba(255, 0, 0, 0.6));
     background-size: 400% 400%;
+    height: 10vh;
+    column-gap: 20%;
+    display: flex;
+    justify-content: space-around;
     position: relative;
     animation: cambiar 30s infinite;
     animation-timing-function: linear;
 }
 
-.imglinks {
-    scale: 35%
+
+.section{
+    /* background-color: red; */
+    position: relative;
+    width: 16%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+
 .link {
+   /*  background-color: rgba(0, 0, 255, 0.398); */
+    position: absolute;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 100%;
 }
+
+
+.imglinks {
+    scale: 30%;
+}
+
+
 
 @keyframes cambiar{
     0%{background-position: 0 50%}
