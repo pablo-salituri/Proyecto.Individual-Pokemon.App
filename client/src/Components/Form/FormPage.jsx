@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getTypes,createPokemon } from "../../Redux/actions";
+import { getTypes, createPokemon ,getAllPokemons} from "../../Redux/actions";
 import Preview from "../Preview/Preview";
 import styles from './FormPage.module.css';
 import validate from './Validate.js';          
@@ -109,8 +109,10 @@ export default function FormPage() {
             console.log('Campos ok');           
             const message = await dispatch(createPokemon(input));
             window.alert(message);
-            if (message === `FELICITACIONES!\nPokemon creado con éxito`)
-                clearFields()
+            if (message === `FELICITACIONES!\nPokemon creado con éxito`) {
+                clearFields();
+                dispatch(getAllPokemons());
+            }
         } 
     }                  
 

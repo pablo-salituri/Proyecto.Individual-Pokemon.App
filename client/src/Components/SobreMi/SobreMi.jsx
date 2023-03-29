@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
+import styles from './SobreMi.module.css'
+import yo from './yo.jpg'
 
 
 export default function SobreMi() {
@@ -10,11 +12,16 @@ export default function SobreMi() {
     },[]);
 
     return(
-        <div>
-            <p>Mi nombre es Pablo Salitui, tengo 33 años, y soy de Tandil, Argentina.</p>
-            <p>Soy Técnico en Informática e Ingeniero Civil, lo que da cuenta de cómo a lo largo de mi vida me he desempeñado en lo que son dos de mis pasiones. </p>
-            <p>Descubrí Henry a partir de publicidad en las redes; y por un amigo, quien también me recomendó la academia, anticipándome que era una decisión de la cual sólo me arrepentiría de no haberla tomado antes.</p>
-            <p></p>
+        <div className={styles.container}>
+            <div className={styles.div}>
+                <img className={styles.imagen} src={yo} alt="yo" />
+                {/* <div className={styles.texto}> */}
+                    <p className={styles.texto}>Mi nombre es Pablo Salitui, tengo 33 años, y soy de Tandil, Argentina.</p>
+                    <p className={styles.texto}>Soy Técnico en Informática e Ingeniero Civil, y futuro Full Stack Developer; lo que da cuenta de mi atracción hacia la lógica y la búsqueda permanente de soluciones a problemas complejos. </p>
+                    <p className={styles.texto}>Descubrí Henry a partir de publicidad en las redes; y de un amigo, quien también me recomendó la academia, anticipándome que lo único que lamentaría sería de no haberlo hecho antes.</p>
+                    <p className={styles.texto}>Disfruto mucho programar, y sobre todo la libertad que brinda poder hacer mi trabajo desde cualquier sitio; lo que resulta ideal para alguien que ama viajar y conocer lugares nuevos todo el tiempo.</p>
+                {/* </div> */}
+            </div>
         </div>
     )
 }

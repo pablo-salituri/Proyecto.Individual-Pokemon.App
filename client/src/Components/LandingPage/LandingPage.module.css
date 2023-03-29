@@ -11,10 +11,10 @@
 
 
 .logo {
-  /* background-color: cyan; */     /* //!BREAKPOINT */
+  /* background-color: cyan; */
   position: relative;
-  bottom: 35%;
-  right: 18%;
+  bottom: 37%;
+  right: 12.5%;
   scale: 15%;
   transform: rotate(-20deg)
 }
