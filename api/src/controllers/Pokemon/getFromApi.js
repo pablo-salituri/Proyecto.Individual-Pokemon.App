@@ -53,7 +53,7 @@ module.exports = {
 //* Los trae mas facil y mas rapido, segun el id
 
 const axios = require('axios');
-const cantDePokemons = 60;             //1:20 para 150
+const cantDePokemons = 20;             //1:20 para 150
 
 
 const getPokemonsFromApi = async () => {  

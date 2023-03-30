@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getTypes, createPokemon ,getAllPokemons} from "../../Redux/actions";
-import Preview from "../Preview/Preview";
+import { getTypes, createPokemon ,getAllPokemons} from '../../../Redux/actions';
+import Preview from '../../Preview/Preview';
 import styles from './FormPage.module.css';
 import validate from './Validate.js';          
 import fondoNegro2 from './fondoNegro2.jpg'
