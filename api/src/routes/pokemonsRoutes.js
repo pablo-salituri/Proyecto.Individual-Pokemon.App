@@ -6,6 +6,7 @@ const {getAllPokemons} = require('../controllers/Pokemon/getAllPokemons.js');
 const {getPokemonById} = require('../controllers/Pokemon/getPokemonById.js');
 const {getPokemonByName} = require('../controllers/Pokemon/getPokemonByName.js');
 const {postPokemons} = require('../controllers/Pokemon/postPokemons.js');
+const {deletePokemon} = require('../controllers/Pokemon/deletePokemon.js')
 
 const router = Router();
 
@@ -53,6 +54,16 @@ router.post('/', async(req, res) => {
         const respuesta = await postPokemons(Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo)  
         if (!respuesta.error)
         return res.status(200).json(respuesta)  
+        return res.status(503).json(respuesta)
+})
+
+
+router.delete('/:Nombre', async (req, res) => {
+        const {Nombre} = req.params;
+        //console.log(Nombre);
+        const respuesta = await deletePokemon(Nombre.toLowerCase());
+        if (!respuesta.error)
+        return res.status(200).json(respuesta)
         return res.status(503).json(respuesta)
 })
 

@@ -38,7 +38,7 @@ export default function LandingForm() {
                         </section>
                     </Link>
 
-                    <Link>
+                    <Link to='/Delete'>
                         <section className={styles.deleteCard}>
                             <p>ELIMINAR UN POKEMON</p>
                             <div className={styles.icono}> 

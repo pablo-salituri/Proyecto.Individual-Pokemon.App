@@ -1,4 +1,4 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES, CREATE_POKEMON, CLEAR_ERRORS} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES, CLEAR_ERRORS} from './types';
 
 const initialState = {
     allPokemons: [],
@@ -111,7 +111,7 @@ const reducer = (state = initialState, {type, payload}) => {
                 origen: origenOrdenado,
             }
         }
-        case ORDER_BY_DESC: {
+        case ORDER_BY_DESC: {           //!BREAKPOIN
         //console.log(payload);
             let filtroOrdenado = [];
             let origenOrdenado = [];
@@ -152,10 +152,6 @@ const reducer = (state = initialState, {type, payload}) => {
                 origen: origenOrdenado,
             }
         }
-        case CREATE_POKEMON:
-            return {
-                ...state
-            }
         case 'ERROR':
             return {
                 ...state,

@@ -7,6 +7,7 @@ import FormPage from './Components/Form/Create/FormPage';
 import NavBar from './Components/NavBar/NavBar';
 import SobreMi from './Components/SobreMi/SobreMi.jsx';
 import LandingForm from './Components/Form/LandingForm/LandingForm';
+import DeletePokemon from './Components/Form/Delete/DeletePokemon';
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/DetailPage/:detailId' element={<DetailPage />}> </Route>;
         <Route path='/LandingForm' element={<LandingForm />}> </Route>
         <Route path='/FormPage' element={<FormPage />}> </Route>
+        <Route path='/Delete' element={<DeletePokemon />}> </Route>
         <Route path='/SobreMi' element={<SobreMi />}> </Route>
       </Routes>
     </div>

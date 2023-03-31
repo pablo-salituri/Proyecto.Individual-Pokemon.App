@@ -16,7 +16,7 @@ export default function NavBar() {
                 {
                     (location.pathname.includes('Home'))
                     ? (
-                        <Link to='/FormPage' className={styles.link}>
+                        <Link to='/LandingForm' className={styles.link}>
                             <img className={styles.imglinks} src={crea} alt="Crear_Pokemon" />
                         </Link>
                     ) : (
@@ -30,7 +30,7 @@ export default function NavBar() {
                 {
                     (location.pathname.includes('SobreMi'))
                     ? (
-                        <Link to='/FormPage' className={styles.link}>
+                        <Link to='/LandingForm' className={styles.link}>
                             <img className={styles.imglinks} src={crea} alt="Crear_Pokemon" />
                         </Link>
                     ) : (
