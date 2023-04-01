@@ -111,7 +111,7 @@ const reducer = (state = initialState, {type, payload}) => {
                 origen: origenOrdenado,
             }
         }
-        case ORDER_BY_DESC: {           //!BREAKPOIN
+        case ORDER_BY_DESC: {
         //console.log(payload);
             let filtroOrdenado = [];
             let origenOrdenado = [];
