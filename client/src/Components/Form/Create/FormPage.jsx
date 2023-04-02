@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getTypes, createPokemon/*  ,getAllPokemons */} from '../../../Redux/actions';
+import { getTypes, createPokemon, clearErrors} from '../../../Redux/actions';
 import Preview from '../../Preview/Preview';
 import styles from './FormPage.module.css';
 import validate from './Validate.js';          
@@ -11,7 +11,7 @@ import fondoNegro2 from './fondoNegro2.jpg'
 export default function FormPage() {
 
     const dispatch = useDispatch();
-    //const erroresReducer = useSelector(state => state.erroresBack);
+    const erroresReducer = useSelector(state => state.erroresBack);
     const types = useSelector(state => state.tipos);
     const maxTypes = 3;
     const [input, setInput] = useState({
@@ -46,12 +46,15 @@ export default function FormPage() {
         dispatch(getTypes());
     },[dispatch])
 
-    /* useEffect(() => {
+
+    useEffect(() => {
         if (erroresReducer.length)
             window.alert(erroresReducer);
-        if (erroresReducer === `FELICITACIONES!\nPokemon creado con éxito`)
+        if (erroresReducer === `FELICITACIONES!\nPokemon creado con éxito`) {
+            dispatch(clearErrors);
             clearFields()
-    }, [erroresReducer]); */
+        }
+    }, [dispatch, erroresReducer]);
 
 
     function clearFields() {       
@@ -107,12 +110,13 @@ export default function FormPage() {
             return window.alert('Hay campos con errrores')
         else {
             console.log('Campos ok');           
-            const message = await dispatch(createPokemon(input));
-            window.alert(message);
-            if (message === `FELICITACIONES!\nPokemon creado con éxito`) {
-                clearFields();
+            /* const message =  */await dispatch(createPokemon(input));
+            /* console.log(erroresReducer);
+            window.alert(erroresReducer);
+            if (erroresReducer === `FELICITACIONES!\nPokemon creado con éxito`) {
+                clearFields(); */
                 //dispatch(getAllPokemons());
-            }
+            //}
         } 
     }                  
 

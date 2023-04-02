@@ -1,4 +1,5 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES, CLEAR_ERRORS} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, 
+        ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES, CLEAR_ERRORS, CREATE_POKEMON, DELETE_POKEMON} from './types';
 
 const initialState = {
     allPokemons: [],
@@ -159,6 +160,18 @@ const reducer = (state = initialState, {type, payload}) => {
                 origen: origenOrdenado,
             }
         }
+        case CREATE_POKEMON:
+            return {
+                ...state,
+                firstRender: true,
+                erroresBack: payload
+            }
+        case DELETE_POKEMON:
+            return {
+                ...state,
+                firstRender: true,
+                erroresBack: payload
+            }
         case 'ERROR':
             return {
                 ...state,

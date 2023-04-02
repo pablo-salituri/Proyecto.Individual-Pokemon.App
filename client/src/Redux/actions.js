@@ -1,5 +1,5 @@
-import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, 
-    FILTER_BY_ORIGIN, ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES, CLEAR_ERRORS} from './types';
+import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL, FILTER, FILTER_BY_ORIGIN, 
+        ORDER_BY_ASC, ORDER_BY_DESC, GET_TYPES, CLEAR_ERRORS, CREATE_POKEMON, DELETE_POKEMON} from './types';
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/pokemons/';
@@ -140,14 +140,19 @@ export const getTypes = () => {
 }
 
 
-export const createPokemon = (pokemon) => {                 
+export const createPokemon = (pokemon) => {       
     return async function(dispatch) {
         try {
             const respuestaDelBack = await axios.post(URL, pokemon);
-            console.log(respuestaDelBack.data.message);
-            return respuestaDelBack.data.message
-        } catch (error) {                   
-            return error.response.data.error
+            return dispatch({
+                type: CREATE_POKEMON,
+                payload: respuestaDelBack.data.message
+            })
+            //console.log(respuestaDelBack.data.message);
+            //return respuestaDelBack.data.message
+        } catch (error) {  
+            return dispatch({type: 'ERROR', payload: error.response.data.error})
+            //return error.response.data.error
             //console.log('action -> ',error.response.data.error);
         }
     }
@@ -162,12 +167,14 @@ export const clearErrors = (dispatch) => {
 }
 
 
-
 export const deletePokemon = (nombre) => {
     return function(dispatch) {
         return fetch(`${URL}${nombre}`, {method: 'DELETE'})
         .then((response) => response.json())
-        .then(respuesta => respuesta.message)
-        .catch((error) => error)
+        .then(respuesta => dispatch({
+            type: DELETE_POKEMON,
+            payload: respuesta.message})
+        )
+        .catch((error) => dispatch({type: 'ERROR', payload: error}))
     }
 }

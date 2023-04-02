@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { filterByOrigin, deletePokemon, getPokemonByName, clearDetail, getAllPokemons} from "../../../Redux/actions";
+import { filterByOrigin, deletePokemon, getPokemonByName, clearDetail, getAllPokemons, clearErrors} from "../../../Redux/actions";
 import Preview from '../../Preview/Preview';
 import fondoNegro2 from '../Create/fondoNegro2.jpg'
 import styles from './DeletePokemon.module.css';
@@ -13,6 +13,7 @@ export default function DeletePokemon() {
     const navigate = useNavigate();
 
 
+    const erroresReducer = useSelector(state => state.erroresBack);
     const todosLosPokemones = useSelector(state => state.allPokemons)        
     const pokemonsInDB = useSelector(state => state.origen)        
     const {Nombre, Imagen, Tipo} = useSelector(state => state.pokemon)         
@@ -29,13 +30,11 @@ export default function DeletePokemon() {
     async function handleDelete() {
         const response = window.confirm(`¿Eliminar a ${pokemonToDelete}?`)
         if (response) {
-            const message = await dispatch(deletePokemon(pokemonToDelete));
-            dispatch(clearDetail());
+            /* const message =  */await dispatch(deletePokemon(pokemonToDelete));
             //await dispatch(getAllPokemons());
             //dispatch(filterByOrigin('DataBase'));
             //setPokemonToDelete({});  
-            window.alert(message);
-            window.location.reload();
+            //window.alert(message);
         }
     }                                       
 
@@ -53,6 +52,23 @@ export default function DeletePokemon() {
             dispatch(filterByOrigin('DataBase'))
         });
     }, [dispatch]);
+    
+
+    useEffect(() => {
+        if (erroresReducer.length) {
+            window.alert(erroresReducer);
+            dispatch(clearErrors);
+            dispatch(clearDetail());
+            window.location.reload();
+        }
+
+        return () => {
+            dispatch(filterByOrigin("Mostrar Todos"))
+            console.log('Componente Desmontado. Filtros Restaurados')         
+        }
+
+    }, [dispatch, erroresReducer]);
+
 
 
     return(
