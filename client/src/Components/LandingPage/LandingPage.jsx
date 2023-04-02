@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import {getAllPokemons, getTypes} from '../../Redux/actions';
+//import { useEffect } from 'react';
+//import { useDispatch } from 'react-redux';
+//import {getAllPokemons, getTypes} from '../../Redux/actions';
 import pokemon from './pokemon.png';
 import touch from './touch.png'
 import styles from './LandingPage.module.css'
@@ -10,14 +10,14 @@ import styles from './LandingPage.module.css'
 
 export default function LandingPage() {                    
 
-    const dispatch = useDispatch()
+    //const dispatch = useDispatch()
 
-    useEffect(() => {
-        /* document.body.style.background = "url('https://images4.alphacoders.com/115/1159692.jpg')";
-        document.body.style.backgroundSize = "100% 100%"; */
+    /* useEffect(() => {
+        document.body.style.background = "url('https://images4.alphacoders.com/115/1159692.jpg')";
+        document.body.style.backgroundSize = "100% 100%";
         dispatch(getAllPokemons());
         dispatch(getTypes());
-    },[dispatch])
+    },[dispatch]) */
 
     return(                                        
         <div className={styles.container}>        

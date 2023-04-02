@@ -6,17 +6,24 @@ const initialState = {
     pokemon: [],
     filtro: [],     //Este es el filtro por tipo, pero no quería abusar de la palabra "tipo" en la aplicación
     origen: [],      
-    erroresBack: []
+    erroresBack: [],
+    firstRender: true
 }
 
 const reducer = (state = initialState, {type, payload}) => {
     switch(type) {
         case GET_ALL_POKEMONS:
-            return {
-                ...state,                       
-                allPokemons: payload,
-                filtro: payload,
-                origen: payload
+            if (state.firstRender) {
+                return {
+                    ...state,                       
+                    allPokemons: payload,
+                    filtro: payload,
+                    origen: payload,
+                    firstRender: false
+                }}
+            else return  {
+                ...state,
+                allPokemons: payload
             }
         case GET_TYPES:
             const tipos = payload.map(tipo => tipo.Nombre);
