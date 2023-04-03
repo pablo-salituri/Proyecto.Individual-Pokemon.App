@@ -51,11 +51,13 @@ export default function FormPage() {
 
 
     useEffect(() => {
-        if (erroresReducer.length)
+        if (erroresReducer.length) {
             window.alert(erroresReducer);
+            dispatch(clearErrors);                                                  // Limpia los mensajes del Back
+        }
         if (erroresReducer === `FELICITACIONES!\nPokemon creado con éxito`) {
             dispatch(clearErrors);                                                  // Limpia los mensajes del Back
-            clearFields()                                                           // Limpia todos los inputs y checkbox del Form
+            clearFields()                                                // Limpia todos los inputs y checkbox del Form
         }
     }, [dispatch, erroresReducer]);
 
