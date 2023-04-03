@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getTypes, createPokemon, clearErrors} from '../../../Redux/actions';
 import Preview from '../../Preview/Preview';
 import styles from './FormPage.module.css';
@@ -11,6 +12,8 @@ import fondoNegro2 from './fondoNegro2.jpg'
 export default function FormPage() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const erroresReducer = useSelector(state => state.erroresBack);
     const types = useSelector(state => state.tipos);
     const maxTypes = 3;
@@ -78,6 +81,11 @@ export default function FormPage() {
     function handleInputChange(event) {
         setInput({...input, [event.target.name]: event.target.value})
         setErrors(validate({...input, [event.target.name]: event.target.value}))
+    }
+
+
+    function handleClick() {
+        navigate(-1)
     }
 
 
@@ -239,9 +247,10 @@ export default function FormPage() {
                                 />
                                 <p className={styles.danger}>{errors.Peso}</p>
                             </section>
-                        </section>          
+                        </section>
                     </div>
                     <section className={styles.footer}>
+                        <button className={styles.button} type='button' onClick={handleClick}>VOLVER</button>
                         <button className={styles.button} type='submit'>CREAR POKEMON</button>
                         <h6 className={styles.h6}>* : Campos Obligatorios</h6>
                     </section>
