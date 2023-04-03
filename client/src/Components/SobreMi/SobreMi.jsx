@@ -15,12 +15,10 @@ export default function SobreMi() {
         <div className={styles.container}>
             <div className={styles.div}>
                 <img className={styles.imagen} src={yo} alt="yo" />
-                {/* <div className={styles.texto}> */}
-                    <p className={styles.texto}>Mi nombre es Pablo Salitui, tengo 33 años, y soy de Tandil, Argentina.</p>
-                    <p className={styles.texto}>Soy Técnico en Informática e Ingeniero Civil, y futuro Full Stack Developer; lo que da cuenta de mi atracción hacia la lógica y la búsqueda permanente de soluciones a problemas complejos. </p>
-                    <p className={styles.texto}>Descubrí Henry a partir de publicidad en las redes; y de un amigo, quien también me recomendó la academia, anticipándome que lo único que lamentaría sería de no haberlo hecho antes.</p>
-                    <p className={styles.texto}>Disfruto mucho programar, y sobre todo la libertad que brinda poder hacer mi trabajo desde cualquier sitio; lo que resulta ideal para alguien que ama viajar y conocer lugares nuevos todo el tiempo.</p>
-                {/* </div> */}
+                <p className={styles.texto}>Mi nombre es Pablo Salitui, tengo 33 años, y soy de Tandil, Argentina.</p>
+                <p className={styles.texto}>Soy Técnico en Informática e Ingeniero Civil, y futuro Full Stack Developer; lo que da cuenta de mi atracción hacia la lógica y la búsqueda permanente de soluciones a problemas complejos. </p>
+                <p className={styles.texto}>Descubrí Henry a partir de publicidad en las redes; y de un amigo, quien también me recomendó la academia, anticipándome que lo único que lamentaría sería de no haberlo hecho antes.</p>
+                <p className={styles.texto}>Disfruto mucho programar, y sobre todo la libertad que brinda poder hacer mi trabajo desde cualquier sitio; lo que resulta ideal para alguien que ama viajar y conocer lugares nuevos todo el tiempo.</p>
             </div>
         </div>
     )

@@ -19,49 +19,48 @@ export default function Filtros({goToPage1, setFirstRenderFalse}){
 
     const handleFilter = (event) => {
         dispatch(filter(event.target.value));
-        setIfcambios(true)
+        setIfcambios(true)                                  // Cada vez que se aplique un filtro/odenamiento, se vuelve a la página 1                 
     }
     
     const handleOrigin = (event) => {
         dispatch(filterByOrigin(event.target.value));
-        setIfcambios(true)
+        setIfcambios(true)                                  // Cada vez que se aplique un filtro/odenamiento, se vuelve a la página 1
     }
     
     function handleOrder(event) {
-        setOrden(event.target.value)                // Actualizo el metodo de ordenamiento en el estado (Asc/Desc)
-        /* orden === 'Ascendente'                   // Tuve que pasar esta poción de código a useEffect, porque evaluaba
-        ?* dispatch(orderByAsc(ordenPor))           // el ternario antes de actualizar el estado
-        : dispatch(orderByDesc(ordenPor)) */
+        setOrden(event.target.value)                        // Actualizo el metodo de ordenamiento en el estado (Asc/Desc)
+        /* orden === 'Ascendente'                           // Tuve que pasar esta porción de código a useEffect, porque evaluaba
+        ?* dispatch(orderByAsc(ordenPor))                   // el ternario antes de actualizar el estado
+        : dispatch(orderByDesc(ordenPor)) */                // Cada vez que se aplique un filtro/odenamiento, se vuelve a la página 1
         setIfcambios(true)
     }
     
     function handleOrderBy(event) {
-        SetOrdenPor(event.target.value)              // Actualizo el criterio de ordenamiento en el estado (Id, Nombre, Ataque)
+        SetOrdenPor(event.target.value)                     // Actualizo el criterio de ordenamiento en el estado (Id, Nombre, Ataque)
         /* orden === 'Ascendente'                       
         ?* dispatch(orderByAsc(event.target.value))
         : dispatch(orderByDesc(event.target.value)) */
-        setIfcambios(true)
+        setIfcambios(true)                                  // Cada vez que se aplique un filtro/odenamiento, se vuelve a la página 1
     }
 
     useEffect(() => {
-        orden === 'Ascendente'                      // Cuando se detecten cambios en alguno de los estados, vuelve a 
-        ? dispatch(orderByAsc(ordenPor))            // ejecutar los dispatch con la últimza actualización de ambos estados
+        orden === 'Ascendente'                              // Cuando se detecten cambios en alguno de los estados, vuelve a 
+        ? dispatch(orderByAsc(ordenPor))                    // ejecutar los dispatch con la últimza actualización de ambos estados
         : dispatch(orderByDesc(ordenPor)) 
     },[orden, ordenPor, dispatch])  
     
 
-    useEffect(() => {                               // Cada vez que se aplique un filtro/odenamiento, se vuelve a la página 1
+    useEffect(() => {                                       // Cada vez que se aplique un filtro/odenamiento, se vuelve a la página 1
         if (ifcambios) {
             //console.log('cambio');
             setIfcambios(false);
-            setFirstRenderFalse();                  // Evalúo cuando no hay nada para mostrar. Si el el primer render, muestro Gif. Sino, (se aplicaron filtros) renderizo que no hay nada para mostrar
+            setFirstRenderFalse();                          // Evalúo cuando no hay nada para mostrar. Si el el primer render, muestro Gif. Sino, (se aplicaron filtros) renderizo que no hay nada para mostrar
             goToPage1()
         }
     },[ifcambios, goToPage1, setFirstRenderFalse])
 
     return(                                         
         <div className = {styles.div}>
-            {/* {console.log('1',orden)} */}
             <section>
                 <img className={styles.charmander} src={charmander} alt="charmander" />
                 <p className={styles.parrafo}>FILTRA POR TIPO</p>

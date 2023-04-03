@@ -54,8 +54,8 @@ export default function FormPage() {
         if (erroresReducer.length)
             window.alert(erroresReducer);
         if (erroresReducer === `FELICITACIONES!\nPokemon creado con éxito`) {
-            dispatch(clearErrors);
-            clearFields()
+            dispatch(clearErrors);                                                  // Limpia los mensajes del Back
+            clearFields()                                                           // Limpia todos los inputs y checkbox del Form
         }
     }, [dispatch, erroresReducer]);
 
@@ -91,7 +91,7 @@ export default function FormPage() {
 
     function handleCheckBox(event) {       
         if (event.target.checked === true) {                        
-            if (input.Tipo.length < maxTypes){
+            if (input.Tipo.length < maxTypes){                              // Mientras no exceda el limite, pusheo el tipo seleccionado a un array
                 setInput({
                     ...input,
                     Tipo: input.Tipo.concat([event.target.name])
@@ -99,10 +99,10 @@ export default function FormPage() {
             }
             else {
                 window.alert(`No se pueden escoger más de ${maxTypes} tipos`);      
-                event.target.checked = false
+                event.target.checked = false                                            // Cuando se alcanza el limite, no dejo seleccionar más
             }
         }
-        else {
+        else {                                                                          // Cuando des-selecciona, lo quito del array, filtrándolo
             setInput({
                 ...input,
                 Tipo: input.Tipo.filter(tipo => tipo !== event.target.name)
@@ -118,13 +118,7 @@ export default function FormPage() {
             return window.alert('Hay campos con errrores')
         else {
             console.log('Campos ok');           
-            /* const message =  */await dispatch(createPokemon(input));
-            /* console.log(erroresReducer);
-            window.alert(erroresReducer);
-            if (erroresReducer === `FELICITACIONES!\nPokemon creado con éxito`) {
-                clearFields(); */
-                //dispatch(getAllPokemons());
-            //}
+            await dispatch(createPokemon(input));
         } 
     }                  
 

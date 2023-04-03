@@ -21,8 +21,8 @@ export default function DeletePokemon() {
     const [pokemonToDelete, setPokemonToDelete] = useState({})
 
 
-    function handleChange(event) {
-        setPokemonToDelete(event.target.value);
+    function handleChange(event) {                                  // Cuando elijo un pokemon, lo guardo en un estado local
+        setPokemonToDelete(event.target.value);                     // y traigo su información para el Preview
         dispatch(getPokemonByName(event.target.value))
     }
 
@@ -30,11 +30,7 @@ export default function DeletePokemon() {
     async function handleDelete() {
         const response = window.confirm(`¿Eliminar a ${pokemonToDelete}?`)
         if (response) {
-            /* const message =  */await dispatch(deletePokemon(pokemonToDelete));
-            //await dispatch(getAllPokemons());
-            //dispatch(filterByOrigin('DataBase'));
-            //setPokemonToDelete({});  
-            //window.alert(message);
+            await dispatch(deletePokemon(pokemonToDelete));
         }
     }                                       
 
@@ -56,14 +52,14 @@ export default function DeletePokemon() {
 
     useEffect(() => {
         if (erroresReducer.length) {
-            window.alert(erroresReducer);
-            dispatch(clearErrors);
-            dispatch(clearDetail());
+            window.alert(erroresReducer);           // Por ej: "Pokemon eliminado con éxito"
+            dispatch(clearErrors);                  // Limpio los mensajes del Back
+            dispatch(clearDetail());                // Vacío el estado global "Pokemon"
             window.location.reload();
         }
 
-        return () => {
-            dispatch(filterByOrigin("Mostrar Todos"))
+        return () => {                                      // Cuando salgo de esta página, necesito restablecer los filtros,
+            dispatch(filterByOrigin("Mostrar Todos"))       // para poder mostrar todo en "Home" y no sólo los creados
             console.log('Componente Desmontado. Filtros Restaurados')         
         }
     }, [dispatch, erroresReducer]);
@@ -79,8 +75,8 @@ export default function DeletePokemon() {
                     <>
                         <section className={styles.innerForm}>
                             <div className={styles.seleccion}>
-                                <select /* className = {styles.porTipo} */ defaultValue="Elige un Pokemon" name="DB_Pokemons" id="DB_Pokemons" onChange={handleChange}>
-                                    <option disabled={true}/* value={pokemon.Nombre} */>Elige un Pokemon</option>
+                                <select defaultValue="Elige un Pokemon" name="DB_Pokemons" id="DB_Pokemons" onChange={handleChange}>
+                                    <option disabled={true}>Elige un Pokemon</option>
                                         {
                                         pokemonsInDB.map(pokemon => 
                                             <option key={pokemon.Nombre} value={pokemon.Nombre}>{pokemon.Nombre[0].toUpperCase() + pokemon.Nombre.slice(1)}</option>
@@ -89,7 +85,7 @@ export default function DeletePokemon() {
                                 </select>
                                 <section className={styles.boton}>
                                     <button onClick={handleDelete}>BORRAR</button>
-                                    <p>a</p>
+                                    <p>a</p>                                {/* // Es sólo para el difuminado del botón */}
                                 </section>
                             </div>
                             {

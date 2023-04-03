@@ -1,7 +1,8 @@
 import React from "react";
 import styles from './CardDetail.module.css'
 
-    
+
+// Es el detalle que va en el visor izquierdo de la Pokedex
 export default function CardDetail({ID, Nombre, Imagen}) {
     return(           
         <div className={styles.detailOneDiv}>

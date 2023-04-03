@@ -12,7 +12,7 @@ export default function NavBar() {
 
     return(
         <div className = {styles.container}>
-            <section className = {styles.section}>
+            <section className = {styles.section}>                  {/* //Sección izquierda */}
                 {
                     (location.pathname.includes('Home'))
                     ? (
@@ -26,7 +26,7 @@ export default function NavBar() {
                     )
                 }
             </section>
-            <section className = {styles.section}>
+            <section className = {styles.section}>                  {/* // Sección Derecha */}
                 {
                     (location.pathname.includes('SobreMi'))
                     ? (

@@ -14,7 +14,7 @@ export default function HomeCards({ID, Nombre, Imagen, Tipo}) {
                         <section>
                             <h3 className={styles.cardType}>Tipos</h3>
                         </section>
-                        <section className={styles.types} style={{'--num-elements': Tipo.filter(tipo => tipo).length}}>
+                        <section className={styles.types} style={{'--num-elements': Tipo.filter(tipo => tipo).length}}>     {/* //Evalúa qué cantidad de tipos hay, para dividir el espacio en partes iguales */}
                             {Tipo.map((tipo, index) => {
                                 return tipo ? <h4 className={styles.cardType} key={index}>{tipo}</h4> : null;
                             })}

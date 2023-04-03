@@ -55,7 +55,7 @@ export const getPokemonByName = (Nombre) => {
 }
 
 
-export const clearDetail = () => {
+export const clearDetail = () => {              // Vacía el estado global "pokemon"
     return async function(dispatch) {
         try {
             return dispatch({
@@ -159,7 +159,7 @@ export const createPokemon = (pokemon) => {
 }
 
 
-export const clearErrors = (dispatch) => {
+export const clearErrors = (dispatch) => {                  //Limpia el estado global de mensajes del Back
     return dispatch({
         type: CLEAR_ERRORS,
         payload: {}

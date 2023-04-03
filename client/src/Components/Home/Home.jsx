@@ -14,7 +14,7 @@ import styles from './Home.module.css'
 export default function Home() {                
 
     const dispatch = useDispatch();
-    const [firstRender, setFirstRender] = useState(true)
+    const [firstRender, setFirstRender] = useState(true)                // Para saber si no muestra pokemones por Loading, o porque no hay para mostrar
     
     const pokemonsPerPage = 12;
 
@@ -73,7 +73,7 @@ export default function Home() {
                     </section>                  
                 </div>
             )                
-            : (
+            : (                                         // Si no hay pokemones para mostrar, evalúo si es porque no hay, o porque se están cargando
                 firstRender ?
                 (
                     <div className={styles.gifs}>

@@ -4,11 +4,11 @@ import {GET_ALL_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_BY_NAME, CLEAR_DETAIL,
 const initialState = {
     allPokemons: [],
     tipos: [],
-    pokemon: [],
-    filtro: [],     //Este es el filtro por tipo, pero no quería abusar de la palabra "tipo" en la aplicación
+    pokemon: [],    // Este estado se carga con el detalle de un pokemon en particular, pedido por Id o por Nombre
+    filtro: [],     // Este es el filtro por tipo, pero no quería abusar de la palabra "tipo" en la aplicación
     origen: [],      
-    erroresBack: [],
-    firstRender: true
+    erroresBack: [],        // Son los mensajes que vienen desde el Back (no necesariamente son errores)
+    firstRender: true       // Lo uso para saber si el getAllPokemons sólo debe traer los pokemones (false), o también cargar los estados de filtro y origen (true
 }
 
 const reducer = (state = initialState, {type, payload}) => {
@@ -49,7 +49,7 @@ const reducer = (state = initialState, {type, payload}) => {
                 ...state,
                 pokemon: payload
             }
-        case CLEAR_DETAIL:
+        case CLEAR_DETAIL:                                   // Vacía el estado global "pokemon"
             return {
                 ...state,
                 pokemon: payload
@@ -177,14 +177,13 @@ const reducer = (state = initialState, {type, payload}) => {
                 ...state,
                 erroresBack: payload
             }                          
-        case CLEAR_ERRORS:
+        case CLEAR_ERRORS:                       //Limpia el estado global de mensajes del Back
             return {
                 ...state,
                 erroresBack: payload
             }
         default:
             return {...state};
-            //return {...initialState};
     }
 }
 

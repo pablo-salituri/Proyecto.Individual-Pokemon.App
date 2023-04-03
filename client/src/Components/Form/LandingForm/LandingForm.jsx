@@ -5,7 +5,6 @@ import styles from './LandingForm.module.css';
 import fondoNegro2 from '../Create/fondoNegro2.jpg'
 import upload from './upload.png';
 import Delete from './delete.png';
-//import edit from './edit.png'
 
 
 export default function LandingForm() {

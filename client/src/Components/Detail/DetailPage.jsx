@@ -16,10 +16,8 @@ export default function DetailPage() {
     const location = useLocation();
     const nombreQuery = location.search.split('=')[1];
 
-    //console.log('location ', location);
-    //console.log('params ', useParams());
 
-    //* Traigo los datos del componente global, independientemente de si la solicitud se hizo por query o params
+    // Traigo los datos del componente global, independientemente de si la solicitud se hizo por query o params
     const {ID, Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo} = useSelector(state => state.pokemon);
     const erroresReducer = useSelector(state => state.erroresBack);
 
@@ -28,7 +26,7 @@ export default function DetailPage() {
         navigate(-1)
     }
     
-    //*Si el componente posee location.search al ejecutarse, significa que el pedido se hizo por query. Caso contrario por params
+    // Si el componente posee location.search al ejecutarse, significa que el pedido se hizo por query. Caso contrario por params
     useEffect(() => {
         if (!location.search)
             dispatch(getPokemonDetail(detailId))
@@ -36,7 +34,7 @@ export default function DetailPage() {
             dispatch(getPokemonByName(nombreQuery))
 
         return () => {
-            dispatch(clearDetail())
+            dispatch(clearDetail())                     // Limpia el estado global "Pokemon"
             console.log('Componente Desmontado')         
         }
     },[nombreQuery, location.search, detailId, dispatch])             
@@ -46,18 +44,18 @@ export default function DetailPage() {
         <div className={styles.contenedor}>                                              
             <img className={styles.pokedex} src={pokedex} alt="pokedex" />          
             {
-                erroresReducer.length ?
-                (
+                erroresReducer.length ?                         // Si hay errores, significa que se intentó buscar un pokemon que no existe
+                (                                               // Por lo tanto devuelvo un pokemon desconocido
                 <div>
                     <section className={styles.visorIzq}>
-                        <CardDetail
+                        <CardDetail                             // Visor izquierdo de la pokedex
                             ID = '?'
                             Nombre = 'Nombre: ?'
                             Imagen = {mewtwo}
                         />
                     </section>
                     <section className={styles.visorDer}>
-                        <CardDetail2
+                        <CardDetail2                            // Visor derecho de la pokedex
                             Vida = '?'
                             Ataque = '?'
                             Defensa = '?'
@@ -71,17 +69,17 @@ export default function DetailPage() {
                     <span className={styles.span}>POKEMON DESCONOCIDO</span>
                 </div> 
             ) : (                      
-                ID ?
+                ID ?                                                        // Si no hay errores, espero a tener ID para renderizar el pokemon
                     <div>
                         <section className={styles.visorIzq}>
-                            <CardDetail
+                            <CardDetail                                     // Visor izquierdo de la pokedez
                                 ID = {ID}
                                 Nombre = {Nombre}
                                 Imagen = {Imagen}
                             />
                         </section>
                         <section className={styles.visorDer}>
-                            <CardDetail2
+                            <CardDetail2                                    // Visor derechode la pokedex
                                 Vida = {Vida}
                                 Ataque = {Ataque}
                                 Defensa = {Defensa}
@@ -94,7 +92,7 @@ export default function DetailPage() {
                         <button className={styles.button} onClick={back}>Volver</button>
                     </div>
                 : (
-                    <p className={styles.loading}>LOADING...</p>        
+                    <p className={styles.loading}>LOADING...</p>            // Mientras no estén todos los datos, aparecerá el mensaje de Loading...
                 )
             )
             }

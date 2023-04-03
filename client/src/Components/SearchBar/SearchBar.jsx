@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from './SearchBar.module.css';
-//import pokebola from './pokebola.png'
 import pokedex from './pokedex.png'
 
 
@@ -17,7 +16,6 @@ export default function SearchBar() {
         <div className={styles.div}>
             <input placeholder="Busca un Pokemon en tu pokedex..." className={styles.input} type="search" value={busqueda} onChange={handleInput}/>
             <Link to={`/DetailPage/search?name=${busqueda}`}>
-                {/* <button>Buscar</button> */}
                 <img className={styles.pokedex} src={pokedex} alt='pokedex' />
             </Link>
         </div>
