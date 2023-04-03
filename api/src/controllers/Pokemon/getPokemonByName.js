@@ -3,7 +3,7 @@ const URL = 'https://pokeapi.co/api/v2/pokemon/';
 const  {Pokemon, Type}  = require('../../db.js')
 
 const getPokemonByName = async (name) => {
-    //console.log(name)
+    
     try {
 
         // Busco inicialmente si el Pokemon se encuentra en la BDD

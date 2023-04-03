@@ -4,7 +4,7 @@ const URL = 'https://pokeapi.co/api/v2/type';
 
 const getTypes = async() => {
     try {
-
+        // Verifico primero si hay tipos cargados en la Base de Datos
         const tipos = await Type.findAll({
             attributes: ['Nombre']
         });
@@ -14,6 +14,7 @@ const getTypes = async() => {
             return tipos;
         }
 
+        //Sino, los traigo de la API, y los cargo en la Base de Datos
         let arregloBDD = [];
         const respuesta = await axios.get(URL);
         const apiTypes = respuesta.data.results

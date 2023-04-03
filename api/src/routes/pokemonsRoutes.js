@@ -50,7 +50,6 @@ router.post('/', async(req, res) => {
         const {Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo} = req.body;         
         if (!Nombre || !Imagen || !Vida || !Ataque || !Defensa)
                 return res.status(400).json({message: "Faltan ingresar datos"})
-        //else return res.status(200).json({message: "todo bien"})
         const respuesta = await postPokemons(Nombre, Imagen, Vida, Ataque, Defensa, Velocidad, Altura, Peso, Tipo)  
         if (!respuesta.error)
         return res.status(200).json(respuesta)  
@@ -60,7 +59,6 @@ router.post('/', async(req, res) => {
 
 router.delete('/:Nombre', async (req, res) => {
         const {Nombre} = req.params;
-        //console.log(Nombre);
         const respuesta = await deletePokemon(Nombre.toLowerCase());
         if (!respuesta.error)
         return res.status(200).json(respuesta)
