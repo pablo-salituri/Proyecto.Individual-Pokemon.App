@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './NavBar.module.css';
-import crea from './crea.png';
+import tuspokemons from './tuspokemons.png'
 import inicio from './inicio.png'
 import nosotros from './nosotros.png';
 import { Link } from "react-router-dom";           
@@ -17,7 +17,7 @@ export default function NavBar() {
                     (location.pathname.includes('Home'))
                     ? (
                         <Link to='/LandingForm' className={styles.link}>
-                            <img className={styles.imglinks} src={crea} alt="Crear_Pokemon" />
+                            <img className={styles.imglinks} src={tuspokemons} alt="Crear_Pokemon" />
                         </Link>
                     ) : (
                         <Link to='/Home' className={styles.link}>
@@ -31,7 +31,7 @@ export default function NavBar() {
                     (location.pathname.includes('SobreMi'))
                     ? (
                         <Link to='/LandingForm' className={styles.link}>
-                            <img className={styles.imglinks} src={crea} alt="Crear_Pokemon" />
+                            <img className={styles.imglinks} src={tuspokemons} alt="Crear_Pokemon" />
                         </Link>
                     ) : (
                         <Link to='/SobreMi' className={styles.link}>

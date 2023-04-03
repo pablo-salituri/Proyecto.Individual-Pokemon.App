@@ -66,51 +66,52 @@ export default function DeletePokemon() {
             dispatch(filterByOrigin("Mostrar Todos"))
             console.log('Componente Desmontado. Filtros Restaurados')         
         }
-
     }, [dispatch, erroresReducer]);
 
 
-
     return(
-        pokemonsInDB.length !== todosLosPokemones.length ?
-        (
-            <div className = {styles.container}>
-                {console.log(pokemonsInDB)}
-                <img className={styles.fondoNegro} src={fondoNegro2} alt="fondoNegro2" />
-                <section className={styles.form}>
-                    <section className={styles.innerForm}>
-                        <div className={styles.seleccion}>
-                            <select /* className = {styles.porTipo} */ defaultValue="Elige un Pokemon" name="DB_Pokemons" id="DB_Pokemons" onChange={handleChange}>
-                                <option disabled={true}/* value={pokemon.Nombre} */>Elige un Pokemon</option>
-                                {
-                                pokemonsInDB.map(pokemon => 
-                                    <option key={pokemon.Nombre} value={pokemon.Nombre}>{pokemon.Nombre[0].toUpperCase() + pokemon.Nombre.slice(1)}</option>
-                                )
-                                }
-                            </select>
-                            <section className={styles.boton}>
-                                <button onClick={handleDelete}>BORRAR</button>
-                                <p>a</p>
-                            </section>
-                        </div>
-                        {
-                        Tipo && Tipo.length ?
-                            (<div className={styles.preview}>
-                                <Preview Nombre={Nombre} Imagen={Imagen} Tipo={Tipo}/>
-                            </div>)
-                        : (<div className={styles.preview}>
-                                <Preview Nombre='' Imagen='' Tipo={['']}/>
-                        </div>)
-                        }
-                    </section>
-                    <section className={styles.volver}>
-                        <button onClick={handleClick}>VOLVER</button>      
-                    </section>
-                </section>    
-            </div>
-        ) :
-        (
-            <div>CARGANDO...</div>
-        )        
+        <div className = {styles.container}>
+            {console.log(pokemonsInDB)}
+            <img className={styles.fondoNegro} src={fondoNegro2} alt="fondoNegro2" />
+            <section className={styles.form}>
+                {pokemonsInDB.length !== todosLosPokemones.length ?
+                    (
+                    <>
+                        <section className={styles.innerForm}>
+                            <div className={styles.seleccion}>
+                                <select /* className = {styles.porTipo} */ defaultValue="Elige un Pokemon" name="DB_Pokemons" id="DB_Pokemons" onChange={handleChange}>
+                                    <option disabled={true}/* value={pokemon.Nombre} */>Elige un Pokemon</option>
+                                        {
+                                        pokemonsInDB.map(pokemon => 
+                                            <option key={pokemon.Nombre} value={pokemon.Nombre}>{pokemon.Nombre[0].toUpperCase() + pokemon.Nombre.slice(1)}</option>
+                                        )
+                                        }
+                                </select>
+                                <section className={styles.boton}>
+                                    <button onClick={handleDelete}>BORRAR</button>
+                                    <p>a</p>
+                                </section>
+                            </div>
+                            {
+                            Tipo && Tipo.length ?
+                                (<div className={styles.preview}>
+                                    <Preview Nombre={Nombre} Imagen={Imagen} Tipo={Tipo}/>
+                                </div>) :
+                                (<div className={styles.preview}>
+                                    <Preview Nombre='' Imagen='' Tipo={['']}/>
+                                </div>)
+                            }
+                        </section>
+
+                        <section className={styles.volver}>
+                            <button onClick={handleClick}>VOLVER</button>      
+                        </section>
+                    </> ) :
+                    (
+                    <div className={styles.cargando}>CARGANDO...</div>
+                    )  
+                }
+            </section>    
+        </div>        
     )
 }

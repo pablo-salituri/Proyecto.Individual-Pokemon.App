@@ -134,3 +134,12 @@
 .volver button:hover {
     cursor: pointer;
 }
+
+
+.cargando {
+    font-size: 2vw;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 41%;
+}
