@@ -4,10 +4,10 @@
 
 
 .contenedor{
-    position: relative;
+    position: absolute;
     display: inline-block;
     text-align: center;
-    margin-top: 3%;
+    margin-top: 6%;
     margin-bottom: 3%;
 }
 

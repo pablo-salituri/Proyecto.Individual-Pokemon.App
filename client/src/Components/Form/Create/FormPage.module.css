@@ -30,8 +30,8 @@
     display: flex;                 
     flex-direction: column;
     align-items: center;
-    line-height: 180%;
-    font-size: 1.1em;
+    line-height: 3.4vh;
+    font-size: 1.85vh;
 }
 
 
@@ -41,7 +41,7 @@
 
 
 .divForm {
-    /* background-color: brown;  */           
+    /* background-color: brown;  */
     display: flex;
     flex-direction: column;
     position: absolute;       
@@ -54,12 +54,13 @@
     /* background-color: cyan; */
     position: absolute;
     top: 20%;
-    right: 1%;
-    width: 20%;
-    height: 80%;
+    right: 4.5%;
+    /* width: 15vw; */
+    /* height: 40vh; */
     display: flex;
     justify-content: left;
     margin: 0;
+    scale: 80%;
 } 
 
 .Form {
@@ -97,41 +98,46 @@
 }
 
 .sectionInputs {
+    /* background-color: rgb(77, 134, 134); */
     display: flex;
     flex-direction: column;
-    row-gap: 3.5em;
+    /* row-gap: 3.5em; */
+    row-gap: 5.3vh;
 }
 
 .sectionInput {
+    /* background-color: rgb(99, 52, 52); */
     display: flex;
     flex-direction: column;
-    width: 22em;
-    height: 7.5em;
-    row-gap: 0.5em;
+    width: 18.4vw;
+    /* height: 7.5em; */
+    height: 12.9vh;
+    row-gap: 0.9vh;
     align-items: center;
 }
 
 .inputs {                           
     background-color: rgb(220, 220, 220);
-    height: 2.5em;
-    width: 20em;
+    height: 4.3vh;
+    width: 16.5vw;
     border-radius: 2em;
     padding-left: 1.5em;
-    font-size: 1em;
+    font-size: 1.8vh;
     font-weight: bold;
 }
 
 .inputs::placeholder {
-    font-size: 0.9em;
+    font-size: 1.8vh;
     font-weight: normal;
 }
 
 
 .button {
-    height: 50%;
-    width: 16%;
+    height: 4.5vh;
+    width: 7.4vw;
     border-radius: 0.75em;
     background-color: silver;
+    font-size: 0.7vw;
 }
 
 .button:hover {
@@ -147,18 +153,18 @@
 .warning {
     border: solid red 2px;
     background-color: rgb(220, 220, 220);
-    height: 2.5em;
-    width: 20em;
+    height: 4.3vh;
+    width: 16.5vw;
     border-radius: 2em;
     padding-left: 1.5em;
-    font-size: 1em;
+    font-size: 1.5vh;
     font-weight: bold;
 }
   
 
 .danger {
     color: yellow;
-    font-size: 1em;
+    font-size: 1.7vh;
     margin-top: 0;
 }
 
