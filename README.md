@@ -40,8 +40,6 @@ La idea de este proyecto es construir una aplicación web a partir de la API [**
 
 ## **📁 INSTRUCCIONES**
 
-<br />
-
 ### **🖱 BASE DE DATOS**
 
 Deberás crear dos modelos para tu base de datos. Una será para los pokemones y la otra será para los tipos de pokemones (pueden llevar el nombre que tu quieras). La relación entre ambos modelos debe ser de muchos a muchos. A continuación te dejamos las propiedades que debe tener cada modelo. Aquellas marcadas con un asterísco son obligatorias.
@@ -68,8 +66,6 @@ Deberás crear dos modelos para tu base de datos. Una será para los pokemones y
 <br />
 
 ---
-
-<br />
 
 ### **🖱 BACK-END**
 
@@ -110,8 +106,6 @@ Tu servidor deberá contar con las siguientes rutas:
 <br />
 
 ---
-
-<br />
 
 ### **🖱 FRONT-END**
 
@@ -174,8 +168,6 @@ Este formulario debe ser **controlado completamente con JavaScritp**. No se pued
 
 ---
 
-<br />
-
 ### **🖱 TESTING**
 
 Ten en cuenta que en esta instancia no es obligatorio el desarrollo de testing para tu aplicación. De igual manera, te desafiamos a que los hagas, ¡ya que suman puntos!
@@ -183,11 +175,3 @@ Ten en cuenta que en esta instancia no es obligatorio el desarrollo de testing p
 -  Al menos tener un componente del frontend con sus tests respectivos.
 -  Al menos tener dos rutas del backend con sus tests respectivos.
 -  Al menos tener un modelo de la base de datos con sus tests respectivos.
-
-<br />
-
----
-
-<br />
-
-<img src="./pokemon.png" alt="" />
