@@ -10,7 +10,7 @@
 
 .fondoNegro {
     position: absolute;
-    opacity: 95%;
+    opacity: 0.95;
     width: 93%;
     height: 100%;
     left: 2%;
@@ -61,7 +61,7 @@
 
 .uploadCard, .deleteCard, .updateCard {
     background-color: rgb(103, 103, 103, 0.90);   
-    opacity: 100%;         
+    opacity: 1;         
     width: 100%;
     height: 100%;
     border-radius: 6%;
