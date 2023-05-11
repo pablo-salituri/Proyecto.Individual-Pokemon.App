@@ -2,6 +2,43 @@
 
 # **POKEMON** | Proyecto Individual
 
+## **PROJECT SCREENS**
+
+### **Landing Page**
+![Landing Page](https://github.com/pablo-salituri/Proyecto.Individual-Pokemon.App/assets/116605759/bc60e2d5-f372-449a-926b-ae410fd1fe8e)
+
+<br />
+
+### **Home 1/2**
+![Home 1](https://github.com/pablo-salituri/Proyecto.Individual-Pokemon.App/assets/116605759/0aac3b96-5f99-4408-8288-48dbd6b93e06)
+
+<br />
+
+### **Home 2/2**
+![Home 2](https://github.com/pablo-salituri/Proyecto.Individual-Pokemon.App/assets/116605759/90e3f402-c2a9-4a54-b0cc-8d4b1786306c)
+
+<br />
+
+### **Detail Page**
+![Detail](https://github.com/pablo-salituri/Proyecto.Individual-Pokemon.App/assets/116605759/5b8faac7-1942-40da-9838-3cbed85558e6)
+
+<br />
+
+### **Tus pokemones**
+![Tus Pokemones](https://github.com/pablo-salituri/Proyecto.Individual-Pokemon.App/assets/116605759/fe64e08e-39ec-4d92-89d7-58ff98d69996)
+
+<br />
+
+### **Crear Pokemon**
+![Create](https://github.com/pablo-salituri/Proyecto.Individual-Pokemon.App/assets/116605759/953ca6ea-ebfc-44eb-8ed1-18b536aa4094)
+
+<br />
+
+### **Eliminar Pokemon**
+![Delete](https://github.com/pablo-salituri/Proyecto.Individual-Pokemon.App/assets/116605759/863135d9-165b-4e6d-818a-7b93d18955a7)
+
+<br />
+
 ## **📌 OBJETIVOS**
 
 -  Construir una Single Page Application utlizando las tecnologías: **React**, **Redux**, **Node**, **Express** y **Sequelize**.
